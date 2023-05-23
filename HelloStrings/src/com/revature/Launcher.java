@@ -100,11 +100,23 @@ public class Launcher {
         //StringBuilders are like MUTABLE (changeable) Strings
         //We can DIRECTLY MODIFY THEM
 
-        StringBuilder sb = new StringBuilder("I am a StringBuilder");
+        //PANGRAM EXAMPLE SOLUTION---------------------
 
-        sb.reverse();
+        //String pangram = "Sphinx of Black Quartz, judge my vow";
 
-        System.out.println(sb);
+        StringBuilder pg = new StringBuilder(pangram);
+
+        pg.reverse(); //reverse the pangram
+
+        pg.append("Ben"); //append my name to the end of the pangram
+
+        pg.insert(12, "Jamie"); //insert a different name in index 12
+
+        //replace indexes 0-5 with "Hello from the replace method"
+        pg.replace(0, 5, "Hello from the replace method");
+
+        System.out.println(pg); //print out my stringbuilder
+
 
 
     }
