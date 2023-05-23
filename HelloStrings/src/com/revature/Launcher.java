@@ -117,8 +117,6 @@ public class Launcher {
 
         System.out.println(pg); //print out my stringbuilder
 
-
-
     }
 
 }
