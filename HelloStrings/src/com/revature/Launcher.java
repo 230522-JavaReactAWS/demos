@@ -96,6 +96,17 @@ public class Launcher {
         //Strings (and every other Array) are ZERO INDEXED
         //this means the first character is going to be at index 0 (not 1)
 
+
+        //StringBuilders are like MUTABLE (changeable) Strings
+        //We can DIRECTLY MODIFY THEM
+
+        StringBuilder sb = new StringBuilder("I am a StringBuilder");
+
+        sb.reverse();
+
+        System.out.println(sb);
+
+
     }
 
 }
