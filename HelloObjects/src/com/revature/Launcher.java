@@ -10,7 +10,7 @@ public class Launcher {
         //Instantiate (create) a Person object
         //This will let us access its variables and use its methods
         Person p = new Person();
-        
+
 
         p.walk(); //this returns a String... but does nothing with it
 
@@ -19,6 +19,9 @@ public class Launcher {
 
         //let's print out some Person variables
         System.out.println(p.age);
+
+
+        //yeah
 
     }
 
