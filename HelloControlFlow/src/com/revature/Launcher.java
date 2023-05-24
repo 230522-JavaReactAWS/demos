@@ -93,6 +93,12 @@ public class Launcher {
 
         }
 
+        //quick example of using &&
+        //"If the first expression AND the second expression are true, return true"
+        if(5 == 5 && 10 == 10){
+            System.out.println("the numbers are equal!");
+        }
+
         System.out.println("=========================(Switch Statements)");
 
         //Switches take in a value, and perform one of many options depending on the value
