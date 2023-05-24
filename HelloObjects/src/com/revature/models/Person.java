@@ -51,13 +51,13 @@ public class Person {
     }
 
     /*we saw a no-args and an all-args constructor
-    We can ALSO make some-args constructors.
+    We can ALSO make SOME-ARGS constructors.
     maybe we want some default values and some user-inputted values */
     public Person(int age, double height){
         this.name = "Mike Tyson";
         this.age = age;
         this.height = height;
     }
-    //with this, we would have a default name, and a user-iputted age and height
+    //with this, we would have a default name, and a user-inputted age and height
 
 }

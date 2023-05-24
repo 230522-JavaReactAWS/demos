@@ -26,7 +26,7 @@ public class Launcher {
         //let's see some variables of these Person objects.
         System.out.println(p2.name + " and " + p3.name + " are writing club bangers");
 
-
+        
 
     }
 
