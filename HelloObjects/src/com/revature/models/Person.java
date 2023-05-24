@@ -28,7 +28,14 @@ public class Person {
      When we instantiate an object, we use a constructor depending on what values we want
      Constructors will have the same name as the Class, but no return type. */
 
-    //Ben will remember to talk about METHOD OVERLOADING
+    /* These Constructors are examples of METHOD OVERLOADING
+        Overloaded methods have the SAME NAMES, but DIFFERENT PARAMETERS
+            By different I mean different number, or order of the data types
+            (The return type can be different too)
+
+        This is an example of POLYMORHPISM (a pillar of OOP)
+            "Same name/thing different forms"
+     */
 
     //no-args constructor. It takes NO ARGUMENTS. Typically used to give default values to an object
     //If you create a Person object with no parameters, this constructor will get used
