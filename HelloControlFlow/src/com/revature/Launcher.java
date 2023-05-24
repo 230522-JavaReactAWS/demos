@@ -93,6 +93,35 @@ public class Launcher {
 
         }
 
+        System.out.println("=========================(Switch Statements)");
+
+        //Switches take in a value, and perform one of many options depending on the value
+
+        System.out.println("What is the best Pokemon?");
+
+        String pokemon = "Totodile";
+
+        //"cases" check the inputted value
+        //if the value matches one of the cases, then that case's code will run
+        switch(pokemon){
+            case "Mudkip": {
+                System.out.println("Correct!");
+                break;
+            }
+            case "Totodile": {
+                System.out.println("Close, but not the best one");
+                break;
+            }
+            case "Diglett": {
+                System.out.println("Your opinion is wrong");
+                break; //without a break statement, every single case will run after one matches
+                //we need breaks to "break" out of the switch
+            }
+            default: { //the default block will run if none of the above cases are matched
+                System.out.println("Your choice was so bad that it was not recognized.");
+            }
+        }
+
     }
 
 }
