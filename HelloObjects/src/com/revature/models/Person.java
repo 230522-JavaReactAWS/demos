@@ -21,4 +21,43 @@ public class Person {
     It takes no (parameters), so we don't need to supply any arguments when calling this method.
      */
 
+    //constructors below--------------------
+
+    /* Remember, constructors are methods that allow us to give values to our object's variables
+
+     When we instantiate an object, we use a constructor depending on what values we want
+     Constructors will have the same name as the Class, but no return type. */
+
+    //Ben will remember to talk about METHOD OVERLOADING
+
+    //no-args constructor. It takes NO ARGUMENTS. Typically used to give default values to an object
+    //If you create a Person object with no parameters, this constructor will get used
+    public Person(){
+        this.name = "Daryn"; //String
+        this.age = 29; //int
+        this.height = 7.5; //double
+        //what is "this"? It's referring to the variable of THIS Class
+        //THIS Class's name variable. THIS Class's age variable. etc.
+    }
+    //no-args constructors are like the default state for an object that we don't customize
+    //AKA objects we give me initial values to.
+
+    //all-args constructor. This constructor takes a parameter (argument) for each Person variable
+    //This lets us make Person objects with whatever values we choose
+    public Person(String name, int age, double height) {
+        this.name = name;
+        this.age = age;
+        this.height = height;
+    }
+
+    /*we saw a no-args and an all-args constructor
+    We can ALSO make some-args constructors.
+    maybe we want some default values and some user-inputted values */
+    public Person(int age, double height){
+        this.name = "Mike Tyson";
+        this.age = age;
+        this.height = height;
+    }
+    //with this, we would have a default name, and a user-iputted age and height
+
 }
