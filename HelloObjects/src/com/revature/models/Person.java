@@ -34,8 +34,7 @@ public class Person {
             (The return type can be different too)
 
         This is an example of POLYMORHPISM (a pillar of OOP)
-            "Same name/thing different forms"
-     */
+            "Same name/thing different forms" */
 
     //no-args constructor. It takes NO ARGUMENTS. Typically used to give default values to an object
     //If you create a Person object with no parameters, this constructor will get used
