@@ -38,6 +38,13 @@ public class Launcher {
         System.out.println(a.age);
         System.out.println(a.name);
 
+        //all-args Associate
+        Associate a2 = new Associate("Ben", 25, 9, true);
+
+
+        //recall that the code() method is specific to the Associate Class
+        //p3.code(); //THIS WON'T WORK! code() was declared in Associate, not Person
+
     }
 
 }
