@@ -1,6 +1,7 @@
 package com.revature;
 
 //Person is in a different package than Launcher. So we need to IMPORT it before it's visible to Launcher
+import com.revature.models.Associate;
 import com.revature.models.Person;
 
 public class Launcher {
@@ -26,7 +27,16 @@ public class Launcher {
         //let's see some variables of these Person objects.
         System.out.println(p2.name + " and " + p3.name + " are writing club bangers");
 
-        
+        //Using Associate and its members--------------
+
+        Associate a = new Associate(); //no args associate
+
+        a.code(); //code() has a print statement inside of it already
+        System.out.println(a.walk()); //walk() returns a String, which we then have to print out
+
+        //These two values are coming from the Person Class (inherited by Associate)
+        System.out.println(a.age);
+        System.out.println(a.name);
 
     }
 
