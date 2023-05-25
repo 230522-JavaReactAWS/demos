@@ -1,5 +1,8 @@
 package com.revature;
 
+import com.revature.models.CookieEatingMonster;
+import com.revature.models.Food;
+
 public class Launcher {
 
     public static void main(String[] args) {
@@ -44,6 +47,23 @@ public class Launcher {
         finally {
             System.out.println("Hello from the finally block! I will always run.");
         }
+
+
+        System.out.println("=======================(Using our Custom Exception)");
+
+        //instantiate a CookieEatingMonster
+        CookieEatingMonster cm = new CookieEatingMonster();
+
+        //Make some Food objects to test with
+        Food apple = new Food("Apple", false);
+        Food chocoChip = new Food("Chocolate Chip Cookie", true);
+
+        cm.eatCookieWithTryCatch(chocoChip); //We gave it a cookie, so no problem
+        cm.eatCookieWithTryCatch(apple);
+        //yes, an exception was thrown here, but the app did not crash.
+        //the red text we see is a result of e.printStackTrace()
+
+        System.out.println("App didn't actually crash");
 
     }
 
