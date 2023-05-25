@@ -56,10 +56,9 @@ public class Launcher extends ScopeTester{
 
         //System.out.println(methodScopedInt); Java doesn't know what this is. It's method scoped
 
-
+        scopedMethod();
 
     } //end of main method
-
 
     public static void scopedMethod(){
 
@@ -77,9 +76,7 @@ public class Launcher extends ScopeTester{
         //System.out.println(blockScopedInt);
 
     }
-
-
-
+    
 
     //nonstatic methods can call statics no problem. The strictness is with static methods calling things
     public static void hello(){
