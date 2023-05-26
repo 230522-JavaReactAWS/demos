@@ -41,7 +41,29 @@ public class Launcher {
         System.out.println(pokemonList);
 
         //we can use .forEach() method to do something for every Pokemon in the ArrayList
-        pokemonList.forEach(pokemon -> System.out.println("Hello from: " + pokemon.name));
+        pokemonList.forEach(pokemon -> System.out.println("Hello from: " + pokemon.getName()));
+
+        /* forEach explanation -
+
+            "FOR EACH OBJECT in the Collection, do something."
+            What is the arrow? ->? this is called a lambda
+            Basically, you provide a value (or more), and use that value in some expression
+            In this case, we're providing a Pokemon object and printing out its name
+
+            note the variable name "pokemon". This name could be anything since it's just a variable name
+         */
+
+        //this time, we'll use the forEach to call the fight() method for each pokemon object
+        pokemonList.forEach(pokemon -> pokemon.fight());
+
+        //Mew got smoked in the fight. So we need to remove it from the ArrayList with .remove()
+        pokemonList.remove(0);
+
+        System.out.println("Remaining Pokemon: " + pokemonList);
+
+        System.out.println("=============================(Sets)");
+
+        
 
     }
 
