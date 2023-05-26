@@ -40,7 +40,16 @@ public class Pokemon {
 
     //right click -> generate -> getter and setter -> select every field and hit ok
 
-    
+    /* What are getters and setters?
+
+     Combined with private variables, they are how we achieve ENCAPSULATION
+     In a secure application, your Class's variables will typically be private
+     In other words, with encapsulation, you cannot ACCESS or CHANGE (get or set) these variables
+     UNLESS you use getters and setters.
+
+     You don't want your variables to change or be viewed on accident.
+     You want ONE SPECIFIC WAY to view or change those variables. That's where getters and setters come in
+     Getters let you access (get) data. Setters let you change (set) data. */
 
     public String getName() {
         return name;
