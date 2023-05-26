@@ -3,6 +3,7 @@ package com.revature;
 import com.revature.models.Pokemon;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -122,7 +123,26 @@ public class Launcher {
 
         System.out.println(pokemonLL);
 
-        
+        System.out.println("======================(Maps - NOT A COLLECTION)");
+
+        //This is a HashMap that will store people's names, which we can access through an Integer key.
+        HashMap<Integer, String> names = new HashMap();
+
+        //we can use put() to specify key value pairs
+        names.put(1, "Harold");
+        names.put(2, "Agatha");
+        names.put(3, "Bartholomew");
+
+        System.out.println(names);
+
+        /*Why are we using Integer instead of int??
+
+        Integer is a WRAPPER CLASS. Collections and Maps can only take objects. no primitives
+        Wrapper Classes are the solution to this.
+        Wrapper Classes are CLASS-BASED REPRESENTATIONS of primitives
+
+        int = Integer, char = Character, double = Double, boolean = Boolean, etc...
+        */
 
     }
 
