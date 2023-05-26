@@ -3,6 +3,7 @@ package com.revature;
 import com.revature.models.Pokemon;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 public class Launcher {
 
@@ -63,7 +64,27 @@ public class Launcher {
 
         System.out.println("=============================(Sets)");
 
-        
+        //Instantiate an empty HashSet (which imo is a general-use Set)
+        HashSet<Pokemon> pokemonSet = new HashSet();
+
+        pokemonSet.add(new Pokemon("Mudkip", "Water"));
+        pokemonSet.add(new Pokemon("Arbok", "Poison"));
+        pokemonSet.add(new Pokemon("Bulbasaur", "Grass/Poison"));
+        //Sets are unordered! The order of insertion does not influence the order of the Set (unlike Lists)
+
+        //Sets don't allow duplicates.
+
+        //this is legal, because of the "new" keyword. It's a new object in memory
+        pokemonSet.add(new Pokemon("Bulbasaur", "Grass/Poison"));
+
+        //Let's add the same object twice to demonstrate this
+        Pokemon magikarp = new Pokemon("Magikarp", "Water");
+
+        pokemonSet.add(magikarp);
+        pokemonSet.add(magikarp);
+
+
+        System.out.println(pokemonSet);
 
     }
 
