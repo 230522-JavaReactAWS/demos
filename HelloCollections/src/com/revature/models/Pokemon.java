@@ -28,8 +28,7 @@ public class Pokemon {
         this.type = type;
     }
 
-    //The toString method lets us print out objects as String representations (INSTEAD OF MEMORY ADDRESS)
-
+    //The toString() method lets us print out objects as String representations (INSTEAD OF MEMORY ADDRESSES)
     //right click -> generate -> toString() -> ok
     @Override
     public String toString() {
@@ -37,5 +36,25 @@ public class Pokemon {
                 "name='" + name + '\'' +
                 ", type='" + type + '\'' +
                 '}';
+    }
+
+    //right click -> generate -> getter and setter -> select every field and hit ok
+
+    
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }
