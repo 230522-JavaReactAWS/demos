@@ -4,6 +4,7 @@ import com.revature.models.Pokemon;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Launcher {
 
@@ -83,8 +84,45 @@ public class Launcher {
         pokemonSet.add(magikarp);
         pokemonSet.add(magikarp);
 
-
         System.out.println(pokemonSet);
+
+        //A new bulbasaur object that we'll use below
+        Pokemon bulbasaur = new Pokemon("Bulbasaur", "Grass/Poison");
+
+        //an enhanced for loop to compare each Pokemon object in the HashSet with the bulbasaur above
+        //"For every Pokemon object, which we'll call "p", in the pokemonSet, check if it is equal to our bulbasaur
+        for(Pokemon p : pokemonSet){
+            System.out.println(bulbasaur.equals(p));
+            //bulbasur.equals(bulbasaur) == true, so we get true when we hit a bulbasaur
+        }
+
+        //contains() returns true if a Set contains a certain object
+        System.out.println(pokemonSet.contains(bulbasaur));
+
+        System.out.println("==============================(Queues)");
+
+        //LinkedList implements List AND Queue
+        LinkedList<Pokemon> pokemonLL = new LinkedList();
+
+        pokemonLL.add(new Pokemon("Mudkip", "Water"));
+        pokemonLL.add(new Pokemon("Arbok", "Poison"));
+        pokemonLL.add(new Pokemon("Bulbasaur", "Grass/Poison"));
+
+        System.out.println(pokemonLL); //ordered!
+
+        System.out.println(pokemonLL.peek()); //peek() gets the first value
+
+        System.out.println(pokemonLL.poll()); //poll() gets and removes the first value
+
+        System.out.println(pokemonLL); //first value of the LinkedList is gone!!
+
+        pokemonLL.remove(1); //what?? I thought you could only access the first element in a Queue
+
+        //true, but remember, LinkedLists also implement List. So they inherit from Queue AND List
+
+        System.out.println(pokemonLL);
+
+        
 
     }
 

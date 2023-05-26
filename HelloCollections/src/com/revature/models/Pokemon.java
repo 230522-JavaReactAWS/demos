@@ -1,6 +1,9 @@
 package com.revature.models;
 
-public class Pokemon {
+import java.util.Objects;
+
+//we don't have to explicitly type out "extends Object". Every Class implicitly extends Object
+public class Pokemon extends Object{
 
     //These variables will be private for the sake of ENCAPSULATION (One of the 4 pillars of OOP)
     private String name;
@@ -65,5 +68,23 @@ public class Pokemon {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+    //right click -> generate -> equals and hashCode -> next through everything -> create
+
+    //these two methods work together to let us compare two objects
+    //equals() is the one we use, hashCode() is more of a helper method
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pokemon pokemon = (Pokemon) o;
+        return Objects.equals(getName(), pokemon.getName()) && Objects.equals(getType(), pokemon.getType());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getType());
     }
 }
