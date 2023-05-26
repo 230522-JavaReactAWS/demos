@@ -1,11 +1,12 @@
 package com.revature;
 
+import com.revature.exceptions.NotACookieException;
 import com.revature.models.CookieEatingMonster;
 import com.revature.models.Food;
 
 public class Launcher {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotACookieException {
 
         System.out.println("===============(Throwing some RuntimeExceptions - AKA Unchecked Exceptions)");
 
@@ -59,11 +60,21 @@ public class Launcher {
         Food chocoChip = new Food("Chocolate Chip Cookie", true);
 
         cm.eatCookieWithTryCatch(chocoChip); //We gave it a cookie, so no problem
-        cm.eatCookieWithTryCatch(apple);
+        //cm.eatCookieWithTryCatch(apple);
         //yes, an exception was thrown here, but the app did not crash.
         //the red text we see is a result of e.printStackTrace()
 
         System.out.println("App didn't actually crash");
+
+
+        //now, we're going to use the other CookieEatingMonster method
+        cm.eatCookieWithThrows(chocoChip);
+        cm.eatCookieWithThrows(apple);
+
+        /* the main method throws a NotACookieException,
+        but since main is the method on the stack, it has nowhere else to go.
+        So the exception gets thrown regardless.
+        A better solution here would be a try/catch */
 
     }
 
