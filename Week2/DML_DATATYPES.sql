@@ -96,6 +96,16 @@ SELECT * FROM roles ORDER BY role_salary; --by default, it orders by increasing 
 SELECT * FROM employees ORDER BY first_name DESC;
 
 
+--FUNCTIONS----------------------------
+
+--Scalar functions can take in up to one value, and they return one value
+SELECT now(); --returns current date/time
+SELECT upper('this string will be returned in uppercase');
+
+--Aggregate functions can take multiple values, and they return one value
+SELECT avg(role_salary) FROM roles;
+SELECT sum(role_salary) FROM roles;
+SELECT count(first_name) FROM employees;
 
 
 --UPDATE--------------------
