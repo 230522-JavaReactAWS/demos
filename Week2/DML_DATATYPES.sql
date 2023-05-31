@@ -158,4 +158,3 @@ CREATE TABLE employees(
 );
 
 --we could have also done ON DELETE SET NULL, if we want to preserve the record but not the FK
-
