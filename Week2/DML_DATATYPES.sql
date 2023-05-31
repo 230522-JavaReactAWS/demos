@@ -59,7 +59,7 @@ VALUES ('Eugene', 'Krabs', 1),
 	   ('Sheldon', 'Plankton', 1);
 
 
-SELECT * FROM employees
+SELECT * FROM employees;
 
 --The WHERE CLAUSE-----------------------------
 
@@ -107,6 +107,15 @@ SELECT avg(role_salary) FROM roles;
 SELECT sum(role_salary) FROM roles;
 SELECT count(first_name) FROM employees;
 
+--GROUP BY will merge rows together based on matching column values
+SELECT count(*) FROM roles GROUP BY role_salary;
+
+--HAVING is like a where clause, but it can only be used after a GROUP BY. WHERE will not work after a group by.
+SELECT count(*) FROM employees GROUP BY last_name HAVING last_name = 'Tentacles';
+
+--This is because the WHERE clause only works after a selection from the tables
+--WHERE does NOT work on values returned from aggregate functions.
+
 
 --UPDATE--------------------
 
@@ -117,5 +126,36 @@ UPDATE employees SET last_name = 'Plankton' WHERE first_name = 'Sheldon';
 --NOTE: the where clause is important here, otherwise everybody's last name would change
 
 
+--DELETE--------------------
 
+--We can use delete to delete records from a table. (I don't often do this, but sometimes it's necessary)
+
+--trying to delete the marketing director role
+DELETE FROM roles WHERE role_title = 'Marketing Director';
+--this DELETE works fine, since no employees are linked to the Marketing Director role
+
+--now, let's try to delete the Manager role
+DELETE FROM roles WHERE role_title = 'Manager';
+--Can't do it! There are employee records that are pointing to the Manager records
+--If you try to delete a record that is depended on by other records, PostgreSQL won't let you do it.
+
+/* Why can't we delete??
+ 
+  This is just a built-in rule, to avoid what's known as "orphan records"
+  "We can't have records that refer to other records that don't exist"
+  		This is one way SQL enforces REFERENTIAL INTEGRITY 
+  		
+  In order for this delete to work, we would have had to say "ON DELETE CASCADE" in our foreign key column
+  observe below: (not a real table we'll use) */
+
+CREATE TABLE employees(
+
+	employee_id serial PRIMARY KEY, 
+	first_name TEXT NOT NULL, 
+	last_name TEXT NOT NULL,
+	role_id_fk int REFERENCES roles(role_id) ON DELETE CASCADE --this also works for ON UPDATE CASCADE
+
+);
+
+--we could have also done ON DELETE SET NULL, if we want to preserve the record but not the FK
 
