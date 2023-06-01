@@ -61,6 +61,10 @@ VALUES ('Eugene', 'Krabs', 1),
 
 SELECT * FROM employees;
 
+--we can also select individual columns, not just all data
+
+SELECT first_name FROM employees;
+
 --The WHERE CLAUSE-----------------------------
 
 --The WHERE clause in a SELECT statement lets us further filter the data that comes back
