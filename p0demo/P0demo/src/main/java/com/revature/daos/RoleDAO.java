@@ -66,7 +66,22 @@ public class RoleDAO implements RoleDAOInterface{
 
         try(Connection conn = ConnectionUtil.getConnection()){
 
-            
+            //Create the SQL String (to be filled with the values from the method parameters)
+            String sql = "UPDATE roles SET role_salary = ? where role_title = ?";
+
+            //Instantiate a PreparedStatement to fill in the variable wildcard values
+            PreparedStatement ps = conn.prepareStatement(sql);
+
+            //using ps.set___() we can fill the wildcard values in
+            ps.setInt(1, salary);
+            ps.setString(2, title);
+
+            //execute the update! (We're not getting any data returned, so no need for a ResultSet object)
+            ps.executeUpdate();
+            //NOTE: executeUpdate() instead of executeQuery(). query is for SELECTS only
+
+            //if we get this far in the try block, we can assume nothing went wrong. return true!
+            return true;
 
         } catch(SQLException e){
             System.out.println("Update failed!!");
