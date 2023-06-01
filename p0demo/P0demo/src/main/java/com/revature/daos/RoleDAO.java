@@ -88,7 +88,7 @@ public class RoleDAO implements RoleDAOInterface{
             e.printStackTrace(); //this is what gives us an error message in the console
         }
 
-        return false;
+        return false; //if update fails, we get returned false
     }
 
 
