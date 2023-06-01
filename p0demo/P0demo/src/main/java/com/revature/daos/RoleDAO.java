@@ -35,16 +35,21 @@ public class RoleDAO implements RoleDAOInterface{
             The results of the Query will be stored in a ResultSet object.*/
             ResultSet rs = ps.executeQuery();
 
-            //Extract the Role data from the ResultSet. We need to use the all-args constructor to store all the data
-            //to get data out of a ResultSet, we use the rs.get___() methods
-            Role role = new Role(
-                    rs.getInt("role_id"),
-                    rs.getString("role_title"),
-                    rs.getInt("role_salary")
-            );
-            //Remember, this is just a constructor. we opened it up for the sake of cleaner code.
+            //rs.next() checks if there is any data in the ResultSet that we haven't accessed yet.
+            if(rs.next()) {
 
-            return role; //return the Role object to the user!
+                //Extract the Role data from the ResultSet. We need to use the all-args constructor to store all the data
+                //to get data out of a ResultSet, we use the rs.get___() methods
+                Role role = new Role(
+                        rs.getInt("role_id"),
+                        rs.getString("role_title"),
+                        rs.getInt("role_salary")
+                );
+                //Remember, this is just a constructor. we opened it up for the sake of cleaner code.
+
+                return role; //return the Role object to the user!
+
+            }
 
         } catch(SQLException e){
             System.out.println("error getting Role");
