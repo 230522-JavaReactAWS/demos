@@ -30,6 +30,12 @@ public class Launcher {
         //getting a Role object by id
         System.out.println(rDAO.getRoleById(2));
 
+        //try to update the role salary for Manager
+        System.out.println(rDAO.updateRoleSalary(500000, "Manager"));
+        System.out.println(rDAO.getRoleById(1)); //checking if the Manager salary was updated
+
+
+
     }
 
 }
