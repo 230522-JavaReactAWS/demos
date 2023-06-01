@@ -10,6 +10,6 @@ public interface RoleDAOInterface {
     Role getRoleById(int id);
 
     //a method that UPDATEs a Role's salary
-    //I'll write this out later
+    boolean updateRoleSalary(int salary, String title);
 
 }

@@ -61,4 +61,20 @@ public class RoleDAO implements RoleDAOInterface{
 
     } //end of getRoleById() method
 
+    @Override
+    public boolean updateRoleSalary(int salary, String title) {
+
+        try(Connection conn = ConnectionUtil.getConnection()){
+
+            
+
+        } catch(SQLException e){
+            System.out.println("Update failed!!");
+            e.printStackTrace(); //this is what gives us an error message in the console
+        }
+
+        return false;
+    }
+
+
 }
