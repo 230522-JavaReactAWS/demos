@@ -1,6 +1,8 @@
 package com.revature;
 
+import com.revature.daos.EmployeeDAO;
 import com.revature.daos.RoleDAO;
+import com.revature.models.Employee;
 import com.revature.utils.ConnectionUtil;
 
 import java.sql.Connection;
@@ -34,7 +36,14 @@ public class Launcher {
         System.out.println(rDAO.updateRoleSalary(500000, "Manager"));
         System.out.println(rDAO.getRoleById(1)); //checking if the Manager salary was updated
 
+        //Instantiate an EmployeeDAO object so we can use its methods
+        EmployeeDAO eDAO = new EmployeeDAO();
 
+        //insert a new employee (we need to instantiate it first)
+        Employee marrio = new Employee("Marrio","Hinkle", 3);
+
+        //run the insert method
+        System.out.println(eDAO.insertEmployee(marrio));
 
     }
 

@@ -13,6 +13,15 @@ public class EmployeeDAO implements EmployeeDAOInterface{
 
     @Override
     public ArrayList<Employee> getAllEmployees() {
+
+        //Instantiate a Connection object so that we can talk to the DB
+        try(Connection conn = ConnectionUtil.getConnection()){
+
+        } catch(SQLException e){
+            System.out.println("Failed to get all employees");
+            e.printStackTrace(); //detailed info in our console about what went wrong
+        }
+
         return null;
     }
 
