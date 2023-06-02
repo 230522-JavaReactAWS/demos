@@ -108,6 +108,30 @@ SELECT * FROM superheroes;
 --The relation matter to heros, it doesn't matter as much to homes.
 
 
+--JOINS-------------------------
+
+--insert a superhero with no home
+INSERT INTO superheroes (hero_name, hero_power, first_name, last_name, home_id_fk)
+VALUES ('Hancock', 'Power Slap', 'Will', 'Smith', NULL);
+
+--Remember, joins are necessary when we want to SELECT data from multiple tables. MULTI-TABLE QUERIES!!
+
+--INNER JOIN
+--return all records with matching data/results (typically from the PK/FK) in both tables
+SELECT * FROM superheroes INNER JOIN homes ON home_id_fk = home_id;
+
+--LEFT JOIN
+--returns all records from the left table, and matching records on the right table
+SELECT * FROM superheroes LEFT JOIN homes ON home_id_fk = home_id;
+
+--RIGHT JOIN
+--returns all records from the right table, and matching records on the left table
+SELECT * FROM superheroes RIGHT JOIN homes ON home_id_fk = home_id;
+
+--RIGHT VS LEFT? This is determined by the position of the table in the join SYNTAX
+--LEFT_TABLE JOIN RIGHT_TABLE
+
+--FULL JOIN (AKA FULL OUTER JOIN)
+--return everything.
 
 
-	  
