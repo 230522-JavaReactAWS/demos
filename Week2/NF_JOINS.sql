@@ -133,5 +133,6 @@ SELECT * FROM superheroes RIGHT JOIN homes ON home_id_fk = home_id;
 
 --FULL JOIN (AKA FULL OUTER JOIN)
 --return everything.
+SELECT * FROM superheroes FULL JOIN homes ON home_id_fk = home_id;
 
 
