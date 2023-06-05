@@ -1,4 +1,4 @@
-package com.revature;
+package com.revature.deprecated;
 
 import com.revature.daos.EmployeeDAO;
 import com.revature.daos.RoleDAO;
@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+// Ben get scammed lol we ain't finna use this class anymore
 public class Launcher {
 
     public static void main(String[] args) {
