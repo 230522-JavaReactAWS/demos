@@ -17,8 +17,8 @@ public class EmployeeController {
     Just like before we essentially want to map our CRUD methods to handlers
 
     TODO Create handlers for the following:
-    Create
-    Read (All)
+    Create -
+    Read (All) -
     Read (One)
     Update
     Delete
@@ -67,4 +67,18 @@ public class EmployeeController {
             ctx.status(400);
         }
     }
+
+    // Create some method stubs here just for now
+    public static void handleGetOne(Context ctx){
+        ctx.status(405);
+    }
+
+    public static void handleUpdate(Context ctx){
+        ctx.status(405);
+    }
+
+    public static void handleDelete(Context ctx){
+        ctx.status(405);
+    }
+
 }

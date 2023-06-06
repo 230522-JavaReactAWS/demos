@@ -9,6 +9,8 @@ import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Type;
 
+import static io.javalin.apibuilder.ApiBuilder.*;
+
 public class JavalinAppConfig {
 
     // This is the class I plan to use to do ALL my Javalin configuration
@@ -32,8 +34,21 @@ public class JavalinAppConfig {
     };
 
     private Javalin app = Javalin.create(config -> config.jsonMapper(gsonMapper))
-                            .get("/", EmployeeController::handleGetAll)
-                            .post("/", EmployeeController::handleCreate);
+            // routes will declare all our possible paths
+            .routes(() ->{
+                // each path will allow to group like method
+                path("employees", () ->{
+                    // Declare my routes and methods super quickly
+                    get(EmployeeController::handleGetAll);
+                    post(EmployeeController::handleCreate);
+                    put(EmployeeController::handleUpdate);
+                    delete(EmployeeController::handleDelete);
+                    // What about /employees/{id}?????
+                    path("{id}", () ->{
+                        get(EmployeeController::handleGetOne);
+                    });
+                });
+            });
 
     // To make it so the main method of the Driver class is what STARTS the application, we'll create a method that
     // allows to start the javalin app we've configured here
