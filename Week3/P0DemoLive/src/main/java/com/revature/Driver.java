@@ -1,5 +1,6 @@
 package com.revature;
 
+import com.revature.controllers.EmployeeController;
 import io.javalin.Javalin;
 
 public class Driver {
@@ -9,7 +10,7 @@ public class Driver {
 
     public static void main(String[] args) {
 
-        Javalin app = Javalin.create().get("/", ctx-> ctx.result("Hello World")).start(7070);
+        Javalin app = Javalin.create().get("/", EmployeeController::handleGetAll).start(7070);
 
     }
 }
