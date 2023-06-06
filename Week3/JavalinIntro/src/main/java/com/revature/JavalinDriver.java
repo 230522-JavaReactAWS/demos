@@ -72,6 +72,36 @@ public class JavalinDriver {
                         ctx.status(400);
                     }
                 })
+                // We changed the order of this to be declared before the path /{id}
+                //http://localhot:7070/query?username=SomeNameHere
+                .get("/query" , ctx -> {
+                    // Let's look at a query parameter
+                    // These are mainly used for filtering a specific resource (think search bars)
+                    String username = ctx.queryParam("username");
+
+                    // One of the reasons to be careful with query parameters is that they might container sensitive
+                    // information that would then be on display
+                    String password = ctx.queryParam("password");
+
+                    ctx.result(username + " tried to access the page! And their password is " + password);
+                })
+                // Adding in a new method to test our path parameters
+                // This path that we're accepting traffic on is http://localhost:7070/{id}
+                .get("/{id}", ctx -> {
+                    String id = ctx.pathParam("id");
+                    // Let's find out if we're on the "list"
+
+                    // we just need to search out List to see if it contains our name
+                    boolean onList = names.contains(id);
+
+                    if (onList){
+                        ctx.result(id + " is on the list!");
+                    } else {
+                        ctx.result("You're not on the list!");
+                        ctx.status(403);
+                    }
+                })
+
                 .start(7070);
     }
 }
