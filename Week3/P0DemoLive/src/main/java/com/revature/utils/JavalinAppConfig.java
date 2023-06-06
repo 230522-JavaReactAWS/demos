@@ -3,6 +3,7 @@ package com.revature.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.revature.controllers.EmployeeController;
+import com.revature.controllers.RoleController;
 import io.javalin.Javalin;
 import io.javalin.json.JsonMapper;
 import org.jetbrains.annotations.NotNull;
@@ -46,6 +47,17 @@ public class JavalinAppConfig {
                     // What about /employees/{id}?????
                     path("{id}", () ->{
                         get(EmployeeController::handleGetOne);
+                    });
+                });
+                path("roles", () ->{
+                    // Declare my routes and methods super quickly
+                    get(RoleController::handleGetAll);
+                    post(RoleController::handleCreate);
+                    put(RoleController::handleUpdate);
+                    delete(RoleController::handleDelete);
+                    // What about /roles/{id}?????
+                    path("{id}", () ->{
+                        get(RoleController::handleGetOne);
                     });
                 });
             });
