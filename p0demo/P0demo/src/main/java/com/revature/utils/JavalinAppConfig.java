@@ -1,6 +1,16 @@
 package com.revature.utils;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.revature.controllers.EmployeeController;
+import com.revature.controllers.RoleController;
 import io.javalin.Javalin;
+import io.javalin.json.JsonMapper;
+import org.jetbrains.annotations.NotNull;
+
+import java.lang.reflect.Type;
+
+import static io.javalin.apibuilder.ApiBuilder.*;
 
 public class JavalinAppConfig {
 
@@ -11,8 +21,58 @@ public class JavalinAppConfig {
     them
      */
 
+
+
+    // Adding some space in here, so we can format our GSON object mapper for Javalin to use.
+    // I'm copying this directly from the javalin docs at https://javalin.io/documentation#configuring-the-json-mapper
+    // Make sure to import everything
+
+    Gson gson = new GsonBuilder().create();
+    JsonMapper gsonMapper = new JsonMapper() {
+        @Override
+        public String toJsonString(@NotNull Object obj, @NotNull Type type) {
+            return gson.toJson(obj, type);
+        }
+
+        @Override
+        public <T> T fromJsonString(@NotNull String json, @NotNull Type targetType) {
+            return gson.fromJson(json, targetType);
+        }
+    };
+
+    // Let's add in instances of our controllers so we can use the methods
+    private final EmployeeController employeeController = new EmployeeController();
+    private final RoleController roleController = new RoleController();
+
+
     // We'll create a private usage for our Javalin app, so we can only configure it here
-    private Javalin app = Javalin.create();
+    // Now that we have GSON, let's update the coonfig (again pulled directly from Javalin Docs)
+    private Javalin app = Javalin.create(config -> config.jsonMapper(gsonMapper))
+            // This is where we're going to register our routes for our API
+            // Shouldn't be too bad, just mind the lambdas and try to get an understanding of how this comes together
+            // Notice these all come from Javalin's APIBuilder
+            .routes(() -> {
+                path("employees", () -> {
+                    // Method referencing
+                    get(employeeController::handleGetAll);
+                    post(employeeController::handleCreate);
+                    put(employeeController::handleUpdate);
+                    delete(employeeController::handleDelete);
+                    path("{id}", () ->{
+                        get(employeeController::handleGetOne);
+                    });
+                });
+                path("roles", () -> {
+                    // Method referencing
+                    get(roleController::handleGetAll);
+                    post(roleController::handleCreate);
+                    put(roleController::handleUpdate);
+                    delete(roleController::handleDelete);
+                    path("{id}", () ->{
+                        get(roleController::handleGetOne);
+                    });
+                });
+            });
 
     // We'll have a single public method called start to start our Javalin app, this will be called in the driver class
     public void start(int port){

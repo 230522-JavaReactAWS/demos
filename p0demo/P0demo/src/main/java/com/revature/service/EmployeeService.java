@@ -36,5 +36,7 @@ public class EmployeeService {
         // If you're thinking this'll just return the same employee object you passed it, you're mostly correct.
         // The main difference is that this should be an employee with a new value for its id since the database will
         // initialize that value
+
+        // Update: Apparently I misread the DAO layer, disregard the above comment
     }
 }

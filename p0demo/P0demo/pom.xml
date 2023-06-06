@@ -41,7 +41,15 @@
             <version>1.3.7</version>
         </dependency>
 
-        <!-- TODO Add in dependencies for GSON -->
+        <!-- GSON is used for JSON marshalling, it's made by google and used to translate between Java objects and
+        JSON -->
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
+        </dependency>
+
 
     </dependencies>
 
