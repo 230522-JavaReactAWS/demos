@@ -32,7 +32,8 @@ public class JavalinAppConfig {
     };
 
     private Javalin app = Javalin.create(config -> config.jsonMapper(gsonMapper))
-                            .get("/", EmployeeController::handleGetAll);
+                            .get("/", EmployeeController::handleGetAll)
+                            .post("/", EmployeeController::handleCreate);
 
     // To make it so the main method of the Driver class is what STARTS the application, we'll create a method that
     // allows to start the javalin app we've configured here

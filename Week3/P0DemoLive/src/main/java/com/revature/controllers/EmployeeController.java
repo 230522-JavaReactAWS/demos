@@ -31,19 +31,40 @@ public class EmployeeController {
     public static void handleGetAll(Context ctx){
         // Inside here we need to make a call to our Employee Service to get us all the employees listed
         ArrayList<Employee> employees= employeeService.getAllEmployees();
+//
+//        String result = "";
+//
+//        for (Employee e: employees){
+//            result += e.toString() + "\n";
+//        }
+//
+//        ctx.status(200);
+//        ctx.result(result);
 
-        String result = "";
-
-        for (Employee e: employees){
-            result += e.toString() + "\n";
-        }
+        // Now we can leverage our JSON mapper, GSON, to convert our Java Object to a JSON
 
         ctx.status(200);
-        ctx.result(result);
-
+        ctx.json(employees);
     }
 
     public static void handleCreate(Context ctx){
-        ctx.result("Hello World from the employee controller");
+        // To create a new employee from our Context body we need to essentially take it in as a JSON and convert it
+        // To an object of the appropriate class
+
+        Employee emp = ctx.bodyAsClass(Employee.class);
+
+        Employee returnedEmployee = employeeService.createNewEmployee(emp);
+
+        // If the employee object we receive from the service is null, something has gone wrong
+        // If it is not null, yay we did it
+
+        if (returnedEmployee != null){
+            // This means the employee was created
+            ctx.status(201);
+            ctx.json(returnedEmployee);
+        } else{
+            // What happens if it comes back null?
+            ctx.status(400);
+        }
     }
 }
