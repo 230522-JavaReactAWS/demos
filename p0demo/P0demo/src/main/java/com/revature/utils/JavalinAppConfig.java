@@ -7,6 +7,8 @@ import com.revature.controllers.RoleController;
 import io.javalin.Javalin;
 import io.javalin.json.JsonMapper;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Type;
 
@@ -44,10 +46,15 @@ public class JavalinAppConfig {
     private final EmployeeController employeeController = new EmployeeController();
     private final RoleController roleController = new RoleController();
 
+    private static final Logger logger = LoggerFactory.getLogger(JavalinAppConfig.class);
+
 
     // We'll create a private usage for our Javalin app, so we can only configure it here
     // Now that we have GSON, let's update the coonfig (again pulled directly from Javalin Docs)
     private Javalin app = Javalin.create(config -> config.jsonMapper(gsonMapper))
+            .before("/*", ctx -> {
+              logger.info("{} request has been sent to {}", ctx.method(), ctx.fullUrl());
+            })
             // This is where we're going to register our routes for our API
             // Shouldn't be too bad, just mind the lambdas and try to get an understanding of how this comes together
             // Notice these all come from Javalin's APIBuilder
@@ -73,6 +80,7 @@ public class JavalinAppConfig {
                     });
                 });
             });
+
 
     // We'll have a single public method called start to start our Javalin app, this will be called in the driver class
     public void start(int port){

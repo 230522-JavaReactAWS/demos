@@ -7,6 +7,8 @@ import com.revature.controllers.RoleController;
 import io.javalin.Javalin;
 import io.javalin.json.JsonMapper;
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Type;
 
@@ -34,7 +36,16 @@ public class JavalinAppConfig {
         }
     };
 
+    private static final Logger logger = LoggerFactory.getLogger(JavalinAppConfig.class);
+
     private Javalin app = Javalin.create(config -> config.jsonMapper(gsonMapper))
+            // I want to add a log for debugging later, so I'll tell Logback to create a log
+            // for every request I send to the server
+            .before(ctx -> {
+                // This logic here will run before ALL requests to the server
+                // We want to use to log our request sent
+                logger.info(ctx.method() + " Request was sent to path: " + ctx.fullUrl());
+            })
             // routes will declare all our possible paths
             .routes(() ->{
                 // each path will allow to group like method

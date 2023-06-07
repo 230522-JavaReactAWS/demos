@@ -1,6 +1,8 @@
 package com.revature;
 
 import io.javalin.Javalin;
+import io.javalin.http.ForbiddenResponse;
+import io.javalin.http.NotFoundResponse;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -98,11 +100,13 @@ public class JavalinDriver {
                         ctx.result(id + " is on the list!");
                     } else {
                         ctx.result("You're not on the list!");
-                        ctx.status(403);
+                        ctx.status(404);
                     }
-                })
+                });
 
-                .start(7070);
+        app.start(7070);
+
+
     }
 }
 
