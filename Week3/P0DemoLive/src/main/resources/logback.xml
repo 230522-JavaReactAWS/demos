@@ -6,6 +6,8 @@
 <configuration>
     <import class="ch.qos.logback.classic.encoder.PatternLayoutEncoder"/>
     <import class="ch.qos.logback.core.ConsoleAppender"/>
+<!--    Adding import-->
+    <import class="ch.qos.logback.core.FileAppender"/>
 
     <appender name="STDOUT" class="ConsoleAppender">
         <encoder class="PatternLayoutEncoder">
@@ -13,7 +15,18 @@
         </encoder>
     </appender>
 
+<!--    We need to include a File Appender if we want to write our logs to a file-->
+    <appender name="FILE" class="FileAppender">
+        <encoder class="PatternLayoutEncoder">
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} -%kvp- %msg%n</pattern>
+        </encoder>
+        <file>log.txt</file>
+        <append>true</append>
+    </appender>
+
     <root level="info">
         <appender-ref ref="STDOUT"/>
+<!--        Need to register the file appender-->
+        <appender-ref ref="FILE"/>
     </root>
 </configuration>
