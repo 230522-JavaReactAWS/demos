@@ -8,6 +8,8 @@
     <import class="ch.qos.logback.core.ConsoleAppender"/>
 <!--    Adding import-->
     <import class="ch.qos.logback.core.FileAppender"/>
+<!--    THIS IS OPTIONAL WE"LL ADD IN A FILTER FOR JUST WARNINGS-->
+    <import class="ch.qos.logback.classic.filter.LevelFilter" />
 
     <appender name="STDOUT" class="ConsoleAppender">
         <encoder class="PatternLayoutEncoder">
@@ -22,6 +24,12 @@
         </encoder>
         <file>log.txt</file>
         <append>true</append>
+<!--        Adding optional filter below-->
+<!--        <filter class="LevelFilter">-->
+<!--            <level>WARN</level>-->
+<!--            <onMatch>ACCEPT</onMatch>-->
+<!--            <onMismatch>DENY</onMismatch>-->
+<!--        </filter>-->
     </appender>
 
     <root level="info">
