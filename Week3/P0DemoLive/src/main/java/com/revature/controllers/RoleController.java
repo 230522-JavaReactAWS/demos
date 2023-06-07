@@ -44,7 +44,7 @@ public class RoleController {
             ctx.status(200);
             ctx.json(role);
             // This is unnecessary but we'll add a log here
-            logger.info("The following role was obtained from db: " + ctx.json(role));
+            logger.info("The following role was obtained from db: " + role.toString());
         } else{
             ctx.status(404);
             logger.warn("No resource was found at id = " + id + " from ip: " + ctx.ip());
