@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.daos.RoleDAO;
 import com.revature.models.Role;
 import com.revature.service.RoleService;
 import io.javalin.http.Context;
@@ -8,7 +9,7 @@ import org.slf4j.LoggerFactory;
 
 public class RoleController {
 
-    private static final RoleService roleService = new RoleService();
+    private static final RoleService roleService = new RoleService(new RoleDAO());
 
     private static final Logger logger = LoggerFactory.getLogger(RoleController.class);
 

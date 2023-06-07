@@ -14,7 +14,13 @@ public class RoleService {
      */
 
     // We need to get an instance of our RoleDAO to use it
-    private final RoleDAOInterface roleDao = new RoleDAO();
+    // private final RoleDAOInterface roleDao = new RoleDAO();
+    // We're going to alter the constructor so it needs to take in a RoleDAOInterface object
+    private RoleDAOInterface roleDao;
+
+    public RoleService(RoleDAOInterface roleDao){
+        this.roleDao = roleDao;
+    }
 
     // Now we need to think about how the controller is going to call our methods
 
