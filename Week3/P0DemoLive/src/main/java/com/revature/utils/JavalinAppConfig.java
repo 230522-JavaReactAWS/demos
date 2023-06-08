@@ -52,6 +52,7 @@ public class JavalinAppConfig {
                 path("employees", () ->{
                     // Declare my routes and methods super quickly
                     get(EmployeeController::handleGetAll);
+                    // app.get("/employees", EmployeeController::handleGetAll)
                     post(EmployeeController::handleCreate);
                     put(EmployeeController::handleUpdate);
                     delete(EmployeeController::handleDelete);
