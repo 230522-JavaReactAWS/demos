@@ -66,7 +66,7 @@ public class ConnectionUtil {
 
         /*
         Let's create a more secure connection to connect to the db
-         */
+
 
         Properties prop = new Properties();
 
@@ -86,6 +86,14 @@ public class ConnectionUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
+
+         */
+
+        // Let's do this one last time with environment variables
+        String url = System.getenv("URL");
+        String username = System.getenv("USERNAME");
+        String password = System.getenv("PASSWORD");
 
         // Essentially at this point we can guarantee that there is not a current open connection
         conn = DriverManager.getConnection(url, username, password);
