@@ -1,8 +1,12 @@
 package com.revature.utils;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.Properties;
 
 //This Class is where we manage and establish our database connection
 public class ConnectionUtil {
@@ -50,14 +54,38 @@ public class ConnectionUtil {
         //Hardcoded for now - It's possible hide them in the Environment Variables, feel free to look into it
 
         //I'm going to put the credentials in Strings, and use those strings in a method that gets connections
-        String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=p0demo";
-        String username = "postgres";
-        String password = "Sparky2014!!"; //this is the password you made when you installed Postgres
+//        String url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=p0demo";
+//        String username = "postgres";
+//        String password = "Sparky2014!!"; //this is the password you made when you installed Postgres
 
         //This return statement is what returns out actual database Connection object
         //Note how this getConnection() method has a return type of Connection
         // return DriverManager.getConnection(url, username, password);
 
+
+
+        /*
+        Let's create a more secure connection to connect to the db
+         */
+
+        Properties prop = new Properties();
+
+        // Initialize strings with dummy values
+        String url = "";
+        String username = "";
+        String password = "";
+
+        // Now I need to load the properties file with the correct application.properties file
+        try {
+            prop.load(new FileReader("src/main/resources/application.properties"));
+            // Let's get the values from our properties file
+
+            url = prop.getProperty("url");
+            username = prop.getProperty("username");
+            password = prop.getProperty("password");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
         // Essentially at this point we can guarantee that there is not a current open connection
         conn = DriverManager.getConnection(url, username, password);

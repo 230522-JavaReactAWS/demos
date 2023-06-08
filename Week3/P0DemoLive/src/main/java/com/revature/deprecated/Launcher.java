@@ -3,7 +3,10 @@ package com.revature.deprecated;
 import com.revature.daos.EmployeeDAO;
 import com.revature.daos.RoleDAO;
 import com.revature.models.Employee;
+import com.revature.utils.ConnectionUtil;
 
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class Launcher {
@@ -14,12 +17,12 @@ public class Launcher {
          A resource (in this case, a DB connection) is opened within the parenthesis
          Another benefit is that the resource will close for us when the block completes
          This is helpful for code cleanup and preventing memory leaks*/
-//        try(Connection conn = ConnectionUtil.getConnection()){
-//            System.out.println("CONNECTION SUCCESSFUL :)");
-//        }
-//        catch(SQLException e){
-//            System.out.println("Connection Failed :(" );
-//        }
+        try(Connection conn = ConnectionUtil.getConnection()){
+            System.out.println("CONNECTION SUCCESSFUL :)");
+        }
+        catch(SQLException e){
+            System.out.println("Connection Failed :(" );
+        }
 
 
         //calling DAO methods below---------------
