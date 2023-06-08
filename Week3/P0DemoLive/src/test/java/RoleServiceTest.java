@@ -1,14 +1,15 @@
 import com.revature.daos.RoleDAO;
 import com.revature.models.Role;
 import com.revature.service.RoleService;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class RoleServiceTest {
 
     // We're mocking the DAO to prevent calls to the actual DB
-    RoleDAO mockRoleDao = Mockito.mock(RoleDAO.class);
+    RoleDAO mockRoleDao = mock(RoleDAO.class);
     RoleService roleService = new RoleService(mockRoleDao);
 
     @Test
@@ -16,7 +17,7 @@ public class RoleServiceTest {
         // What should we get when we pass zero to this method?
         // Zero shouldn't pass the if condition, so we should be able to just verify null
 
-        Assertions.assertNull(roleService.getRoleById(0));
+        assertNull(roleService.getRoleById(0));
     }
 
     @Test
@@ -24,7 +25,7 @@ public class RoleServiceTest {
         // What should we get when we pass zero to this method?
         // Zero shouldn't pass the if condition, so we should be able to just verify null
 
-        Assertions.assertNull(roleService.getRoleById(-3));
+        assertNull(roleService.getRoleById(-3));
     }
 
     // Now, how do we go about testing for positive values?
@@ -36,9 +37,9 @@ public class RoleServiceTest {
         Role role = new Role(4, "Supreme Leader Of The World", 1000000);
 
         // Now we need to make sure our dao returns this when called
-        Mockito.when(mockRoleDao.getRoleById(4)).thenReturn(role);
+        when(mockRoleDao.getRoleById(4)).thenReturn(role);
 
-        Assertions.assertEquals(role, roleService.getRoleById(4));
+        assertEquals(role, roleService.getRoleById(4));
     }
 
     // Let's test the update salary method
@@ -46,36 +47,37 @@ public class RoleServiceTest {
     public void updateRoleSalaryNullTitle(){
         String title = null;
 
-        Assertions.assertFalse(roleService.updateSalary(12345, title));
+        assertFalse(roleService.updateSalary(12345, title));
 
         // We need to make this test "stronger"
         // Let's also verify that our method for updating the db was NOT called
-        Mockito.verifyNoInteractions(mockRoleDao);
+        verifyNoInteractions(mockRoleDao);
     }
 
     @Test
     public void updateRoleSalaryBlankTitleString(){
         String title = "    ";
 
-        Assertions.assertFalse(roleService.updateSalary(12345, title));
+        assertFalse(roleService.updateSalary(12345, title));
 
         // We need to make this test "stronger"
         // Let's also verify that our method for updating the db was NOT called
-        Mockito.verifyNoInteractions(mockRoleDao);
+        verifyNoInteractions(mockRoleDao);
     }
 
     // Let's test this with a title that is formatted incorrectly
-    // TODO Fix this test
     @Test
     public void updateSalaryMalformedTitle(){
-        String title = "fRY cOOk";
+        String title = "fRY cOOk"; // WANT this to turn in "Fry Cook"
 
-        Mockito.when(mockRoleDao.updateRoleSalary(Mockito.any(), Mockito.any())).thenReturn(true);
+        // Fixed this to have anyInt and anyString
+        when(mockRoleDao.updateRoleSalary(anyInt(), anyString())).thenReturn(true);
 
         roleService.updateSalary(12345, title);
 
-        Mockito.verify(mockRoleDao, Mockito.times(1)).updateRoleSalary(12345, "Fry Cook");
-    }
+        // Used Mockito.eq to fix this mistake
+        verify(mockRoleDao, times(1)).updateRoleSalary(eq(12345), eq("Fry Cook"));
 
+    }
 
 }
