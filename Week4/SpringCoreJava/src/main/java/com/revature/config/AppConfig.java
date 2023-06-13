@@ -1,5 +1,6 @@
 package com.revature.config;
 
+import com.revature.models.BaseballCoach;
 import com.revature.models.TrackCoach;
 import com.revature.service.MotivationalService;
 import com.revature.service.WorkoutService;
@@ -34,5 +35,11 @@ public class AppConfig {
     @Bean
     public TrackCoach trackCoachBean(){
         return new TrackCoach(workoutService(), motivationalServiceBean());
+    }
+
+    // Let's make our baseball coach the same way
+    @Bean
+    public BaseballCoach baseballCoachBean(){
+        return new BaseballCoach(motivationalServiceBean(), workoutService());
     }
 }
