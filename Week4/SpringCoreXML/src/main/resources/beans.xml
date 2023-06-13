@@ -27,4 +27,14 @@
         <constructor-arg ref="workoutServiceBean" />
     </bean>
 
+<!--    We need to create a configuration for spring to know how to handle our football coach-->
+    <bean id="footballCoachBean" class="com.revature.models.FootballCoach">
+<!--        Initialize the values with our setters-->
+        <property name="workoutService" ref="workoutServiceBean" />
+        <property name="motivationalService" ref="motivationalServiceBean" />
+<!--        Now how to set our regular values-->
+        <property name="teamName" value="Tampa Bay Bucs" />
+        <property name="email" value="todd.bowles@bucs.com" />
+    </bean>
+
 </beans>

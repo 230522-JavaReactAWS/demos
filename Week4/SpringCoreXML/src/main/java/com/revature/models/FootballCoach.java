@@ -45,4 +45,28 @@ public class FootballCoach implements Coach{
     public WorkoutService getWorkoutService() {
         return this.workoutService;
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTeamName() {
+        return teamName;
+    }
+
+    public void setTeamName(String teamName) {
+        this.teamName = teamName;
+    }
+
+    public void setWorkoutService(WorkoutService workoutService) {
+        this.workoutService = workoutService;
+    }
+
+    public void setMotivationalService(MotivationalService motivationalService) {
+        this.motivationalService = motivationalService;
+    }
 }
