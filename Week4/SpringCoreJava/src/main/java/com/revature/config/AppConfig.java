@@ -1,6 +1,7 @@
 package com.revature.config;
 
 import com.revature.models.BaseballCoach;
+import com.revature.models.FootballCoach;
 import com.revature.models.TrackCoach;
 import com.revature.service.MotivationalService;
 import com.revature.service.WorkoutService;
@@ -41,5 +42,21 @@ public class AppConfig {
     @Bean
     public BaseballCoach baseballCoachBean(){
         return new BaseballCoach(motivationalServiceBean(), workoutService());
+    }
+
+    // Last bean we need to do is the football coach
+    @Bean
+    public FootballCoach footballCoachBean(){
+        // SO for the football coach we used SETTER injection instead of constructor
+
+        FootballCoach footballCoach = new FootballCoach();
+        // Set all the values using the setters we made
+        footballCoach.setMotivationalService(motivationalServiceBean());
+        footballCoach.setWorkoutService(workoutService());
+        // We can set individual values as usual
+        footballCoach.setTeamName("Tampa Bay Bucs");
+        footballCoach.setEmail("tod.bowles@bucs.com");
+
+        return footballCoach;
     }
 }
