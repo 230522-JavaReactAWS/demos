@@ -14,10 +14,15 @@
     <bean id="motivationalServiceBean" class="com.revature.service.MotivationalService"/>
 
 <!--    Do the same thing for our workout service-->
-    <bean id="workoutServiceBean" class="com.revature.service.WorkoutService" />
+    <bean id="workoutServiceBean" class="com.revature.service.WorkoutService" scope="prototype"/>
 
 <!--    Now at this point we should be able to make a coach and essentially wire the beans in-->
     <bean id="trackCoachBean" class="com.revature.models.TrackCoach">
+        <constructor-arg ref="motivationalServiceBean" />
+        <constructor-arg ref="workoutServiceBean" />
+    </bean>
+
+    <bean id="baseballCoachBean" class="com.revature.models.BaseballCoach">
         <constructor-arg ref="motivationalServiceBean" />
         <constructor-arg ref="workoutServiceBean" />
     </bean>

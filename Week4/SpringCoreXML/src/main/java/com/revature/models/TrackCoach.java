@@ -32,4 +32,9 @@ public class TrackCoach implements Coach{
     public MotivationalService getMotivationalService() {
         return this.motivationalService;
     }
+
+    @Override
+    public WorkoutService getWorkoutService() {
+        return this.workoutService;
+    }
 }

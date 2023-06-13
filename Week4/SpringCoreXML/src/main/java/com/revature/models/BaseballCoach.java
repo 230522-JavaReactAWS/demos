@@ -36,4 +36,9 @@ public class BaseballCoach implements Coach{
     public MotivationalService getMotivationalService() {
         return this.motivationalService;
     }
+
+    @Override
+    public WorkoutService getWorkoutService() {
+        return this.workoutService;
+    }
 }

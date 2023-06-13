@@ -1,6 +1,7 @@
 package com.revature.models;
 
 import com.revature.service.MotivationalService;
+import com.revature.service.WorkoutService;
 
 public interface Coach {
 
@@ -13,4 +14,6 @@ public interface Coach {
 
     // We'll also make sure anybody can get the motivational service
     MotivationalService getMotivationalService();
+
+    WorkoutService getWorkoutService();
 }
