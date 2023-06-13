@@ -1,6 +1,7 @@
 package com.revature;
 
 import com.revature.models.BaseballCoach;
+import com.revature.models.FootballCoach;
 import com.revature.models.TrackCoach;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -45,6 +46,16 @@ public class SpringXMLDriver {
                     (trackCoach.getWorkoutService() == baseballCoach.getWorkoutService()));
 
             // Now that we've had a look at constructor injection let's take a look at setter injection
+
+            System.out.println("----------------------------------------------------------");
+
+            FootballCoach footballCoach = beanContainer.getBean("footballCoachBean", FootballCoach.class);
+
+            // Now we should be able to view all the fields like before
+            System.out.println(footballCoach.getDailyWorkout());
+            System.out.println(footballCoach.getMotivation());
+            System.out.println(footballCoach.getTeamName());
+            System.out.println(footballCoach.getEmail());
 
 
         } catch (Exception e){
