@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    Inside here is where we declare all our beans.... very similar to dependencies and dependency in pom.xml-->
+
+<!--    I'll start with my motivational service and my workout service-->
+    <bean id="motivationalServiceBean" class="com.revature.service.MotivationalService"/>
+
+<!--    Do the same thing for our workout service-->
+    <bean id="workoutServiceBean" class="com.revature.service.WorkoutService" />
+
+<!--    Now at this point we should be able to make a coach and essentially wire the beans in-->
+    <bean id="trackCoachBean" class="com.revature.models.TrackCoach">
+        <constructor-arg ref="motivationalServiceBean" />
+        <constructor-arg ref="workoutServiceBean" />
+    </bean>
+
+</beans>
