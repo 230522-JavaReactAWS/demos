@@ -1,5 +1,9 @@
 package com.revature.service;
 
+import org.springframework.stereotype.Service;
+
+// Mark the class with @Service
+@Service("motivationalServiceBean")
 public class MotivationalService {
 
     // We get to do some pretending today

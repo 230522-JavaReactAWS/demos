@@ -2,7 +2,10 @@ package com.revature.models;
 
 import com.revature.service.MotivationalService;
 import com.revature.service.WorkoutService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component("trackCoachBean")
 public class TrackCoach implements Coach{
 
     // We'll do the same thing here as our baseball coach
@@ -12,6 +15,7 @@ public class TrackCoach implements Coach{
     private final MotivationalService motivationalService;
 
     // Constructor dependency injection
+    @Autowired
     public TrackCoach(WorkoutService workoutService, MotivationalService motivationalService) {
         this.workoutService = workoutService;
         this.motivationalService = motivationalService;

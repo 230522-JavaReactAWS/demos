@@ -2,14 +2,21 @@ package com.revature.models;
 
 import com.revature.service.MotivationalService;
 import com.revature.service.WorkoutService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component("footballCoachBean")
 public class FootballCoach implements Coach{
     // In my football coach class I'll be using setter injection
 
     // To use setter injection we need to provide the fields, a no args constructions and our mutators for our fields
 
+    // We can mark our non-bean fields if we want to instantiate them with some value by using @Value
+    @Value("tod.bowles@bucs.com")
     private String email;
 
+    @Value("Tampa Bay Bucs")
     private String teamName;
 
     private WorkoutService workoutService;
@@ -62,10 +69,14 @@ public class FootballCoach implements Coach{
         this.teamName = teamName;
     }
 
+    // Since the following below are what set the Bean values, we'll mark these with @Autowired as well
+
+    @Autowired
     public void setWorkoutService(WorkoutService workoutService) {
         this.workoutService = workoutService;
     }
 
+    @Autowired
     public void setMotivationalService(MotivationalService motivationalService) {
         this.motivationalService = motivationalService;
     }

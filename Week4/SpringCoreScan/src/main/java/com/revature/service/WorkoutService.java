@@ -1,5 +1,12 @@
 package com.revature.service;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+// Mark the service class as a service
+//  This class was a prototype scope
+@Service("workoutServiceBean")
+@Scope("prototype")
 public class WorkoutService {
 
     // Again we'll pretend this pulls from some workout service that allows us to get sport specific workouts

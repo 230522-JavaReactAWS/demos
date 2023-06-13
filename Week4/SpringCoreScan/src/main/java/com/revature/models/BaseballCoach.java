@@ -2,7 +2,11 @@ package com.revature.models;
 
 import com.revature.service.MotivationalService;
 import com.revature.service.WorkoutService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+// These are just general components, so we declare them as such
+@Component("baseballCoachBean")
 public class BaseballCoach implements Coach{
 
     /*
@@ -17,6 +21,7 @@ public class BaseballCoach implements Coach{
     private final WorkoutService workoutService;
 
     // Constructor Dependency Injection
+    @Autowired // mark constructor/setter with this to allow spring to handle the config
     public BaseballCoach(MotivationalService motivationalService, WorkoutService workoutService) {
         this.motivationalService = motivationalService;
         this.workoutService = workoutService;
