@@ -52,5 +52,7 @@ public class CourseManagementSystemApplication implements CommandLineRunner {
 
 		System.out.println("------------------------------------");
 		System.out.println(courseService.getAllCourses());
+
+		System.out.println(courseService.searchCourses("calc"));
 	}
 }

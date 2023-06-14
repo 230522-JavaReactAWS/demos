@@ -4,6 +4,8 @@ import com.revature.models.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface CourseDAO extends JpaRepository<Course, Integer> { // Class itself and it's primary key data type
 
@@ -12,5 +14,8 @@ public interface CourseDAO extends JpaRepository<Course, Integer> { // Class its
     // What if I wanted to instead get the course by name?
 
     Course findByName(String name);
+
+    // Search query
+    List<Course> findByNameContainingIgnoreCase(String pattern);
 
 }

@@ -75,4 +75,8 @@ public class CourseService {
 
         return courses;
     }
+
+    public List<Course> searchCourses(String searchPattern){
+        return courseDao.findByNameContainingIgnoreCase(searchPattern);
+    }
 }
