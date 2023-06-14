@@ -1,9 +1,12 @@
 package com.revature.services;
 
 import com.revature.daos.CourseDAO;
+import com.revature.exceptions.CourseNotFoundException;
 import com.revature.models.Course;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CourseService {
@@ -39,5 +42,37 @@ public class CourseService {
 
         return returnedCourse;
 
+    }
+
+
+    // For update we also use the save method here
+    public Course updateCourse(Course c){
+        return courseDao.save(c);
+    }
+
+    // Let's look at delete course
+    // Delete course should be simple enough, delete from CRUDrepo works off id so we'll pass that in
+
+    public boolean deleteCourse(int id){
+        // To delete by id, call deleteById
+        courseDao.deleteById(id);
+
+        // Since delete by id returns void, how can we check to see if it worked?
+        // We'll leverage existsById
+        return !(courseDao.existsById(id));
+    }
+
+    // Find by ID
+    public Course findCourseById(int id){
+        // This returns an optional which is a special class that allows us to work with values that may be null
+        // If this exists we'll return the value, or else we'll maybe raise an exception
+        return courseDao.findById(id).orElseThrow(() -> new CourseNotFoundException("No course found with id: " + id));
+    }
+
+    // Let's get all these courses
+    public List<Course> getAllCourses(){
+        List<Course> courses = courseDao.findAll();
+
+        return courses;
     }
 }

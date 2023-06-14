@@ -29,6 +29,28 @@ public class CourseManagementSystemApplication implements CommandLineRunner {
 
 		// Now that we have injected our service bean we *should* be able to test it
 		Course course = new Course(0, "Intro to Calculus", "Learn the basics of calc", 4);
+		Course course2 = new Course(0, "Diffy Q", "Differential Equations", 3);
+		Course course3 = new Course(0, "Sports Psychology", "Learn about sports and the mind", 3);
+
+
 		courseService.addCourse(course);
+		courseService.addCourse(course2);
+		courseService.addCourse(course3);
+
+		course.setCredits(3);
+
+		courseService.updateCourse(course);
+
+		// We're removing diffy q from the curriculum
+
+		courseService.deleteCourse(2);
+
+		Course returnedCourse = courseService.findCourseById(1);
+		System.out.println(returnedCourse);
+		// I guess we could test our exception
+//		System.out.println(courseService.findCourseById(2));
+
+		System.out.println("------------------------------------");
+		System.out.println(courseService.getAllCourses());
 	}
 }
