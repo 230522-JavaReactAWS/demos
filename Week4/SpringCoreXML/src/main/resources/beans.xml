@@ -11,7 +11,7 @@
 <!--    Inside here is where we declare all our beans.... very similar to dependencies and dependency in pom.xml-->
 
 <!--    I'll start with my motivational service and my workout service-->
-    <bean id="motivationalServiceBean" class="com.revature.service.MotivationalService"/>
+    <bean id="motivationalServiceBean" class="com.revature.service.MotivationalService" />
 
 <!--    Do the same thing for our workout service-->
     <bean id="workoutServiceBean" class="com.revature.service.WorkoutService" scope="prototype"/>

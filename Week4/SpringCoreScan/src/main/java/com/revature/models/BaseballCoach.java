@@ -23,6 +23,7 @@ public class BaseballCoach implements Coach{
     // Constructor Dependency Injection
     @Autowired // mark constructor/setter with this to allow spring to handle the config
     public BaseballCoach(MotivationalService motivationalService, WorkoutService workoutService) {
+        System.out.println("Baseball Coach Initialized");
         this.motivationalService = motivationalService;
         this.workoutService = workoutService;
     }

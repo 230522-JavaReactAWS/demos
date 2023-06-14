@@ -13,7 +13,7 @@ public class FootballCoach implements Coach{
     // To use setter injection we need to provide the fields, a no args constructions and our mutators for our fields
 
     // We can mark our non-bean fields if we want to instantiate them with some value by using @Value
-    @Value("tod.bowles@bucs.com")
+    @Value("todd.bowles@bucs.com")
     private String email;
 
     @Value("Tampa Bay Bucs")

@@ -55,7 +55,7 @@ public class AppConfig {
         footballCoach.setWorkoutService(workoutService());
         // We can set individual values as usual
         footballCoach.setTeamName("Tampa Bay Bucs");
-        footballCoach.setEmail("tod.bowles@bucs.com");
+        footballCoach.setEmail("todd.bowles@bucs.com");
 
         return footballCoach;
     }

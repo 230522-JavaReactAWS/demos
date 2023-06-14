@@ -17,6 +17,7 @@ public class TrackCoach implements Coach{
     // Constructor dependency injection
     @Autowired
     public TrackCoach(WorkoutService workoutService, MotivationalService motivationalService) {
+        System.out.println("Track Coach Initialized");
         this.workoutService = workoutService;
         this.motivationalService = motivationalService;
     }

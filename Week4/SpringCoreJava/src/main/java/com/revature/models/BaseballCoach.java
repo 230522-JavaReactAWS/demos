@@ -18,6 +18,7 @@ public class BaseballCoach implements Coach{
 
     // Constructor Dependency Injection
     public BaseballCoach(MotivationalService motivationalService, WorkoutService workoutService) {
+        System.out.println("Baseball Coach Initialized");
         this.motivationalService = motivationalService;
         this.workoutService = workoutService;
     }
