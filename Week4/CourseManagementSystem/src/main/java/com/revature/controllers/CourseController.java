@@ -21,8 +21,17 @@ public class CourseController {
     }
 
     //To declare a method that will be a handler for a specific http verb we use @VERBMapping to annotate the method
+    // It would make sense to use the query param to denote any search that we want to do on this resource
     @GetMapping
-    public List<Course> getAllCoursesHandler(){
+    public List<Course> getAllCoursesHandler(@RequestParam(name = "search", required = false) String searchPattern){
+
+        // If the searchPattern is null, we should just all the courses
+        // If it has a value then we should search
+        if (searchPattern != null){
+            // We need to search
+            return courseService.searchCourses(searchPattern);
+        }
+
         return courseService.getAllCourses();
     }
 
@@ -38,6 +47,18 @@ public class CourseController {
         return courseService.addCourse(c);
     }
 
+
+    // Let's add in some methods for updating and deleting courses
+    @PutMapping
+    public Course updateCourseHandler(@RequestBody Course c){
+        return courseService.updateCourse(c);
+    }
+
+    @DeleteMapping("delete/{id}") //Delete happens by ID
+    public boolean deleteCourseHandler(@PathVariable("id") int id){
+        // Call the course service to do the deleting
+        return courseService.deleteCourse(id);
+    }
 
 
 }
