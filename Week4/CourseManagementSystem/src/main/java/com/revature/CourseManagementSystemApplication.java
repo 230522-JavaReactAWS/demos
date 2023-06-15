@@ -29,7 +29,7 @@ public class CourseManagementSystemApplication implements CommandLineRunner {
 
 		// Now that we have injected our service bean we *should* be able to test it
 		Course course = new Course(0, "Intro to Calculus", "Learn the basics of calc", 4);
-		Course course2 = new Course(0, "Diffy Q", "Differential Equations", 3);
+		Course course2 = new Course(0, "Calculus and Analytic Geometry II", "Differential Equations", 3);
 		Course course3 = new Course(0, "Sports Psychology", "Learn about sports and the mind", 3);
 
 
@@ -43,7 +43,7 @@ public class CourseManagementSystemApplication implements CommandLineRunner {
 
 		// We're removing diffy q from the curriculum
 
-		courseService.deleteCourse(2);
+//		courseService.deleteCourse(2);
 
 		Course returnedCourse = courseService.findCourseById(1);
 		System.out.println(returnedCourse);
