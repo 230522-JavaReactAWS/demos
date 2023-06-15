@@ -3,9 +3,7 @@ package com.revature.controllers;
 import com.revature.models.Course;
 import com.revature.services.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,19 @@ public class CourseController {
     public List<Course> getAllCoursesHandler(){
         return courseService.getAllCourses();
     }
+
+    // How do we get one like we did before? Before we would go to http://localhost:8080/courses/id
+
+    @GetMapping("{id}")
+    public Course findCourseByIdHandler(@PathVariable("id") int id){
+        return courseService.findCourseById(id);
+    }
+
+    @PostMapping
+    public Course createCourseHandler(@RequestBody Course c){ // @RequestBody attempts to turn the body into Java object
+        return courseService.addCourse(c);
+    }
+
 
 
 }
