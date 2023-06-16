@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "teachers")
-public class Teacher {
+@Table(name = "users")
+public class Person {
 
     // We need to declare our fields for Teacher
     @Id
-    @Column(name="teacher_id")
+    @Column(name="user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -20,10 +20,15 @@ public class Teacher {
     private String lastName;
 
     // We'll double back to department
-    private Department department;
+//    private Department department;
+    // We're scrapping the original field department and doing Roles instead
+    // We need to add in our Roles object
+    // Many people can have one role (i.e. multiple students or multiple teachers)
+    @ManyToOne
+    private Role role;
 
     @Column(unique = true)
-    private String email;
+    private String username;
 
     private String password;
 
@@ -33,15 +38,15 @@ public class Teacher {
     // Now time for the boilerplate stuff
 
 
-    public Teacher() {
+    public Person() {
     }
 
-    public Teacher(int id, String firstName, String lastName, Department department, String email, String password, List<Course> courses) {
+    public Person(int id, String firstName, String lastName, Role role, String username, String password, List<Course> courses) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.department = department;
-        this.email = email;
+        this.role = role;
+        this.username = username;
         this.password = password;
         this.courses = courses;
     }
@@ -70,20 +75,20 @@ public class Teacher {
         this.lastName = lastName;
     }
 
-    public Department getDepartment() {
-        return department;
+    public Role getRole() {
+        return role;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -104,12 +109,12 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
+        return "Person{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", department=" + department +
-                ", email='" + email + '\'' +
+                ", role=" + role +
+                ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", courses=" + courses +
                 '}';
