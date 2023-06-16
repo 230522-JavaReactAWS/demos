@@ -31,7 +31,8 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeRequests() // Underneath here is where we describe the permissions we want to allow
-                .anyRequest().permitAll()
+                .antMatchers("/auth/**").permitAll()
+                .anyRequest().authenticated()
                 .and()
                 .httpBasic();
 
