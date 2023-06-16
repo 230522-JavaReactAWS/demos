@@ -120,4 +120,26 @@ public class PersonService {
     }
 
     // TODO Unregister/Un-enroll from a course
+    public Person unregisterForCourse(int pid, int cid){
+        Person p = getPersonById(pid);
+
+        // Now we need to extract the courses to add to it as necessary
+        List<Course> courses = p.getCourses();
+
+        // Now we need to search the courses table to find the course with id = cid
+        Optional<Course> returnedCourse = courseDao.findById(cid);
+
+        // We need to check that the course they're attempting to unregister from both exists and is in their
+        // list of courses
+        if (returnedCourse.isPresent() && courses.contains(returnedCourse.get())){
+            courses.remove(returnedCourse.get());
+            p.setCourses(courses);
+            personDao.save(p);
+        } else{
+            throw new CourseNotFoundException("No Course with id: " + cid);
+        }
+
+        return p;
+    }
+
 }
