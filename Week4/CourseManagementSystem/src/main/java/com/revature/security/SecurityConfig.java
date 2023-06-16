@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests() // Underneath here is where we describe the permissions we want to allow
                 .antMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated()
+                .antMatchers("/courses/**").hasAuthority("Student")
                 .and()
                 .httpBasic();
 
