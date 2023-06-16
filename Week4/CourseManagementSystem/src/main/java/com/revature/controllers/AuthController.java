@@ -2,10 +2,12 @@ package com.revature.controllers;
 
 import com.revature.daos.PersonDAO;
 import com.revature.daos.RoleDAO;
+import com.revature.dto.AuthResponseDTO;
 import com.revature.dto.LoginDTO;
 import com.revature.dto.RegisterDTO;
 import com.revature.models.Person;
 import com.revature.models.Role;
+import com.revature.security.JwtGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.parameters.P;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -34,13 +35,17 @@ public class AuthController {
 
     private final PasswordEncoder passwordEncoder;
 
+    private final JwtGenerator jwtGenerator;
+
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, PersonDAO personDao, RoleDAO roleDao, PasswordEncoder passwordEncoder) {
+    public AuthController(AuthenticationManager authenticationManager, PersonDAO personDao, RoleDAO roleDao,
+                          PasswordEncoder passwordEncoder, JwtGenerator jwtGenerator) {
         this.authenticationManager = authenticationManager;
         this.personDao = personDao;
         this.roleDao = roleDao;
         this.passwordEncoder = passwordEncoder;
+        this.jwtGenerator = jwtGenerator;
     }
 
 
@@ -80,7 +85,7 @@ public class AuthController {
 
     // Now that we actually can register a person, it should make sense that we also want to log that person in
     @PostMapping("login")
-    public ResponseEntity<String> login(@RequestBody LoginDTO loginDTO){
+    public ResponseEntity<AuthResponseDTO> login(@RequestBody LoginDTO loginDTO){
 
         // From here I'll user my authentication manager to authenticate the user
         Authentication authentication = authenticationManager.authenticate(
@@ -90,7 +95,11 @@ public class AuthController {
         // Store the authentication inside of the SecurityContext
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        return new ResponseEntity<>("User successfully signed in!", HttpStatus.OK);
+//        return new ResponseEntity<>("User successfully signed in!", HttpStatus.OK);
+
+        String token = jwtGenerator.generateToken(authentication);
+
+        return new ResponseEntity<AuthResponseDTO>(new AuthResponseDTO(token), HttpStatus.OK);
 
     }
 }
