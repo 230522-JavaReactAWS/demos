@@ -91,7 +91,7 @@ public class PersonService {
         }
     }
 
-    // TODO Register/Enroll in a course
+    // Register/Enroll in a course
     public Person registerForCourse(int pid, int cid){
         Person p = getPersonById(pid);
 
@@ -119,7 +119,7 @@ public class PersonService {
         return p;
     }
 
-    // TODO Unregister/Un-enroll from a course
+    // Unregister/Un-enroll from a course
     public Person unregisterForCourse(int pid, int cid){
         Person p = getPersonById(pid);
 

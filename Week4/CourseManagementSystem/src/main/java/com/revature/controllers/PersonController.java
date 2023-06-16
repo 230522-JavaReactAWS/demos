@@ -1,5 +1,6 @@
 package com.revature.controllers;
 
+import com.revature.models.Course;
 import com.revature.models.Person;
 import com.revature.services.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,4 +51,20 @@ public class PersonController {
         return personService.deletePersonById(id);
     }
 
+
+    // Let's add in some methods to mess around with our new functionality
+    @GetMapping("{id}/courses")
+    public List<Course> getCoursesFromPersonHandler(@PathVariable("id") int id){
+        return personService.getCoursesByPersonId(id);
+    }
+
+    @PostMapping("{pid}/courses/register/{cid}")
+    public Person registerForCourseHandler(@PathVariable("pid") int pid, @PathVariable("cid") int cid){
+        return personService.registerForCourse(pid, cid);
+    }
+
+    @DeleteMapping("{pid}/courses/register/{cid}")
+    public Person unregisterForCourseHandler(@PathVariable("pid") int pid, @PathVariable("cid") int cid){
+        return personService.unregisterForCourse(pid, cid);
+    }
 }
