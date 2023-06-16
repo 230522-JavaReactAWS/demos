@@ -88,7 +88,7 @@ public class AuthController {
         );
 
         // Store the authentication inside of the SecurityContext
-        SecurityContextHolder.getContext().setAuthentication(authentication)
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         return new ResponseEntity<>("User successfully signed in!", HttpStatus.OK);
 
