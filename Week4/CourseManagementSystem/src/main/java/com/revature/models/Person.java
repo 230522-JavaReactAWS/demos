@@ -1,10 +1,18 @@
 package com.revature.models;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Person {
 
     // We need to declare our fields for Teacher
@@ -14,9 +22,11 @@ public class Person {
     private int id;
 
     @Column(name="first_name")
+    @Length(min = 2, max = 20)
     private String firstName;
 
     @Column(name="last_name")
+    @Length(min = 2)
     private String lastName;
 
     // We'll double back to department
@@ -37,9 +47,11 @@ public class Person {
 
     // Now time for the boilerplate stuff
 
-
+/*
     public Person() {
     }
+
+
 
     public Person(int id, String firstName, String lastName, Role role, String username, String password, List<Course> courses) {
         this.id = id;
@@ -119,4 +131,7 @@ public class Person {
                 ", courses=" + courses +
                 '}';
     }
+
+
+ */
 }

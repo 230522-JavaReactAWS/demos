@@ -37,8 +37,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             // We can get the username from the token
             String username = jwtGenerator.getUsernameFromToken(token);
 
+            System.out.println(username);
+
             // How do we load the user by their username?
             UserDetails userDetails = customUserDetailsService.loadUserByUsername(username);
+
+            System.out.println(userDetails.getAuthorities());
 
             // Now I need a token to describe the user that is logged in and their permissions
 

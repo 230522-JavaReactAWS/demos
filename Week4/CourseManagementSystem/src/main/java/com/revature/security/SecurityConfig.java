@@ -3,6 +3,7 @@ package com.revature.security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -46,7 +47,13 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests() // Underneath here is where we describe the permissions we want to allow
                 .antMatchers("/auth/**").permitAll()
-                .antMatchers("/courses/**").hasAuthority("Student")
+//                .antMatchers("/courses/**").hasAuthority("Student")
+                // We want all our courses available to the public
+                .antMatchers(HttpMethod.GET, "/courses/**").permitAll()
+                .antMatchers(HttpMethod.POST, "/courses/**").hasAuthority("Teacher")
+                .antMatchers(HttpMethod.PUT, "/courses/**").hasAuthority("Teacher")
+                .antMatchers(HttpMethod.DELETE, "/courses/**").hasAuthority("Teacher")
+                .antMatchers("/users/courses/**").hasAuthority("Student")
                 .and()
                 .httpBasic();
 
