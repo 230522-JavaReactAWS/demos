@@ -27,6 +27,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     // We have a couple of imports that we'll add in to make sure everything works correctly
+
+
+
     private final AuthenticationManager authenticationManager;
 
     private final PersonDAO personDao;
@@ -81,6 +84,8 @@ public class AuthController {
         return new ResponseEntity<>("User successfully registered!", HttpStatus.CREATED);
 
     }
+
+
 
 
     // Now that we actually can register a person, it should make sense that we also want to log that person in
