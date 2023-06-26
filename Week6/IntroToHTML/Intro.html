@@ -1,0 +1,114 @@
+<!-- Just like XML this is how we comment things in HTML
+        It can also be multiline-->
+
+<!-- The first non-commented line of our HTMl doc needs to be our doctype directive
+    This basically tells the browser what version of HTML to render the page in -->
+<!DOCTYPE html> 
+<!-- This denotes we are using an html doc and it is html 5 -->
+
+
+<!-- Next we need the actual ROOT tag of our page which will be our HTML tag -->
+<html>
+
+<!-- There are two major tags underneath the html tag, the first is head and the second is body
+
+    Head provides important metadata about the webpage that is not directly visible-->
+
+    <head>
+        <!-- Tags that may be included inside here refer to information about the page such as:
+                        - <style> to apply internal CSS styling to the page
+                        - <link> this will be used to link external resources (external CSS)
+                        - <script> to make use of JS files or logic
+                        - <meta> tags to include metadata for SEO operations
+                        - <title> provides a title for the webpage (displays on the top of the browser) -->
+
+        <title> HTML Basic Structure</title>
+
+    </head>
+
+    <body>
+        <!-- Body tag will contain all of the information directly displayed to the end user, when rendered by the browser -->
+
+        <h1>Hello World!</h1>
+
+        <!--
+                     HTML tags/elements
+                         Used to indicate how content should be displayed. Usually
+                         will require an opening and a closing tag, those that do
+                         not require closing tags are known as "self-closing" tags.
+                         
+                         <p>     paragraph
+                         <h#>    headings (range from 1-6, 1 being the largest)
+                         <div>   division/divider; used to group related elements together
+                         <img/>   image (self-closing)
+                         <a>     anchor; used to create links to other webpages, or to sections of the current page
+                         <br/>    line break (self-closing)
+                         <hr/>    horizontal rule (self-closing)
+                         <input/> creates a field for user input or some sort of [text, checkbox, etc.] (self-closing)
+                     Attributes
+                             HTML elements can have attributes, which provide additional
+                             information about the contents of an element. They appear
+                             within the opening tags of an HTML element, and are made of
+                             two parts: a name/key, and a value. The name and the value are
+                             separated by an equals sign (=). The value of an attribute is 
+                             encapsulated within double quotes ("").
+                 -->
+
+        <h1 id="shoulds-be-unique-across-the-page"> This is a main heading </h1>
+        <h2> This is a sub heading</h2>
+        <h4 class="multiple-classes could-have-the-same-class or-multiple-classes"> This is even smaller!</h4>
+        <hr />
+
+        <p>
+            This is a paragraph tag here. This may be used to display information
+            on the page as we see fit. It could              be used to 
+            
+            
+            
+            
+            <!-- HTML doesn't really care about whitespace -->
+            
+            
+            
+            
+            
+            
+            
+            render some info or describe information coming
+            on the rest of the page
+        </p>
+
+        <!-- If you wanted whitespace you could use a line break <br/> or a non-breaking space point (&nbsp;) -->
+
+        <br />
+
+        <br />
+
+        <h6 hidden> This is the smallest heading tag you can have!</h6>
+
+        <!-- This is more of an aside -->
+
+        <!--
+                    Escape characters
+                        There are some characters that are used in and reserved
+                        for HTML code. If you want to use them in your content
+                        then you need to use their escape character equivalents.
+                        <       -   Less-than       &lt;        &#60;
+                        >       -   Greater-than    &gt;        &#61;    
+                        &       -   Ampersand       &amp;       
+                        ""      -   Quotations      &quot;
+                                -   Space           &nbsp;
+                -->
+
+        <p> 4 &lt; 5</p>
+        <p> 6 &gt; 5</p>
+
+        <p>HTML &amp; CSS</p>
+
+        <p>Here is some text &nbsp; Text</p>
+
+
+
+    </body>
+
+</html>
