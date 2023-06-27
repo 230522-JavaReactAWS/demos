@@ -16,3 +16,6 @@ div2.addEventListener("click", alarm)
 function alarm(){
     alert("A DIV WAS CLICKED!!")
 }
+
+//the way I prefer to do event listeners:
+document.getElementById("btn").onclick = alarm
