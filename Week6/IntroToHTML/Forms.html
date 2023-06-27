@@ -1,0 +1,61 @@
+<!-- to autogenerate an HTML skeleton, type "!" and hit tab (or enter)-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <!--Please don't use forms for P1, they won't work as expected. Check CMS frontend for user input-->
+
+    <!--A form is an (older) way of gathering user input-->
+    <!--These input types don't have to be in a form, they can be standalone which I prefer-->
+    <form>
+
+        <!--Notice the input type we use for these different user inputs-->
+
+        <p>Enter username here:</p>
+        <input type="text" placeholder="ex: bigbon">
+
+        <p>Enter password here:</p>
+        <input type="password" placeholder="password123">
+
+         <p>How old are you?</p>
+         <input type="number">
+
+         <!--Radio buttons only let you choose one option-->
+         <h2>You must choose: </h2>
+
+            <input type="radio" name="radio" id="radio1">
+            <label for="radio1">Option A</label>
+
+            <input type="radio" name="radio" id="radio2">
+            <label for="radio2">Option B</label>
+
+         <!--Checkboxes let you choose as many options as you want-->
+         <h3>How do you feel about front end?</h3>
+
+            <input type="checkbox" name="checkbox" id="check1">
+            <label for="check1">Jovial</label>
+
+            <input type="checkbox" name="checkbox" id="check2">
+            <label for="check2">Terrified</label>
+
+            <input type="checkbox" name="checkbox" id="check3">
+            <label for="check3">Indifferent</label>
+
+            <input type="checkbox" name="checkbox" id="check4">
+            <label for="check4">Somber</label>
+
+        <br><br>
+
+         <!--form insertion-->
+         <input type="submit" value="Submit your answers">
+
+    </form>
+
+</body>
+</html>
