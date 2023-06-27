@@ -92,3 +92,6 @@ NaN
 undefined
 
 */
+
+//NaN (Not a Number) gets returned when a mathematical operation does not return a number
+console.log(0/0)
