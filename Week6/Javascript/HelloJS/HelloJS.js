@@ -64,7 +64,7 @@ console.log("=====================Truthy/Falsy")
 function testTrueFalse(var1, var2){
 
     console.log(var1 + " compared to " + var2)
-    console.log(var1 == var2)
+    console.log(var1 == var2) //checking for value equality
 
 }
 
@@ -81,3 +81,14 @@ testTrueFalse(2, true) //false... WHY?? see below:
 if(2){
     console.log("2 is truthy")
 }
+
+/*for the sake of study, the falsy values are:
+
+false
+0
+""
+null
+NaN
+undefined
+
+*/
