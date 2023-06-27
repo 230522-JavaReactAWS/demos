@@ -1,0 +1,19 @@
+/*This is an EXTERNAL STYLESHEET, which is considered best practice for writing CSS
+
+-Declutters the HTML page (which can get very lengthy and complicated
+-SEO (Search Engine Optimization) which basically means your website will show up higher in searches
+*/
+
+/*Universal Selector - applies styling to EVERY element*/
+*{
+    background-color:aquamarine;
+    transform: rotate(-2deg);
+}
+
+
+/*Another element selector*/
+input{
+    margin-top: 5px;
+    margin-left: 20px;
+    padding:50px;
+}
