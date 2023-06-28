@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!--Bootstrap for the sake of easier, sleeker styling-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+</head>
+<body>
+    
+    <!--We want to wrap our HTML body with a container-fluid div for responsiveness-->
+    <!--Responsiveness? The page's elements will conform to window size (they'll fit the size of the window)-->
+    <div class="container-fluid">
+
+        <h3 id="header">Welcome to the CMS! Please log in:</h3>
+
+        <!--Login section-->
+        <div> 
+
+            <input id="username" type="text" placeholder="username">
+            <input id="password" type="password" placeholder="password">
+            <button id="loginButton" class="btn btn-primary btn-sm">Log in</button>
+
+        </div>
+
+        <!--Register section-->
+        <!--bootstrap class="row" makes div contents render vertically-->
+        <!--bootstrap class="m" lets us set margin. "mt" is margin top-->
+        <div class="row mt-5">
+
+            <h4>New here? Sign up!</h4>
+
+            <!--These input boxes are way too long!-->
+            <!--We need to use the bootstrap grid system-->
+            <div class="row col-lg-2">
+                <input id="R_firstName" type="text" placeholder="first name">
+                <input id="R_lastName" type="text" placeholder="last name">
+                <input id="R_username" type="text" placeholder="username">
+                <input id="R_password" type="password" placeholder="password">
+                <button class="btn btn-primary col-lg-5">Register</button>
+                <!--the grid system adheres to the CONTAINER it's in-->
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="Login.js"></script>
+
+</body>
+</html>
