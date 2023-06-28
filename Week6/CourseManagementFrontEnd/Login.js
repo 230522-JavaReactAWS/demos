@@ -40,10 +40,36 @@ async function login(){
 
 
     .then((response) => response.json()) //extract the body of the HTTP Response (which came from the backend)
-    .then((data) => {
+    .then((data) => { 
 
+        //notice our JWT returned in the response body
         console.log(data)
+        console.log(data.accessToken)
+
+        //we need to translate our JWT to gather the incoming user data (name, id, role, etc)
+        console.log(parseJwt(data.accessToken))
+
+        //use the data to determine what landing page the user gets sent to (teacher page vs student page)
+
+        
 
     })
+    .catch((error) => document.getElementById("header").innerHTML = "Login Failed! Try again...")
+    .finally(() => alert("hi"))
 
+    //TODO: Ben will fix the catch block. Why is it not catching? :(
+
+}
+
+
+
+//I didn't write this. It's a standard JWT parser, which should give us our payload (important user info)
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
 }
