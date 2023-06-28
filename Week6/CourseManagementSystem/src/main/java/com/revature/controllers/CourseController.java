@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController //Marks this class as a controller and says any returned objects will be converted to json
 @RequestMapping("courses") // This basically declares our general route so every path is under http://localhost:8080/courses
-//@CrossOrigin(origins = "http://127.0.0.1:5500") //TODO: show assocs this annotation
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class CourseController {
     // Build out our controller from previous projects but now using spring
 

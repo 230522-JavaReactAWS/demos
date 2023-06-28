@@ -50,7 +50,15 @@ async function login(){
         console.log(parseJwt(data.accessToken))
 
         //use the data to determine what landing page the user gets sent to (teacher page vs student page)
+        if(parseJwt(data.accessToken).Role === "Teacher"){
+            //switch to the teacher page
+            window.location.href = "Teacher.html"
 
+        } else {
+            //send them to the student page
+
+            //window.loction.href = "Student.html"
+        }
         
 
     })
