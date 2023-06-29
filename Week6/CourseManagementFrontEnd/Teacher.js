@@ -1,3 +1,14 @@
+//get the data out of the JWT to use its values
+let loggedInUser = parseJwt(document.cookie)
+
+console.log(loggedInUser) //view our user data
+
+//use our loggedInUser data to fill the page header
+//here, we're using the sub (which is username), as well as Role and Id
+document.getElementById("greeting").innerText = "Welcome " + loggedInUser.sub + ", " + loggedInUser.Role + " " + loggedInUser.Id
+
+//for P1, you'll do something similar to put an User's Id in a new Reimbursement 
+
 const url = "http://localhost:8080/"
 
 //make sure that the createCourseButton invokes the createCourse() method onclick
@@ -42,13 +53,30 @@ window.onload = async function(){
             cell4.innerText = course.credits
             row.appendChild(cell4)
 
+            //putting approve/deny buttons in the table
+            let cell5 = document.createElement("td")
+            //make approve button
+            var approveButton = document.createElement("button")
+            approveButton.innerText = "Approve"
+            //make deny button
+            var denyButton = document.createElement("button")
+            denyButton.innerText = "Deny"
+            //add the new buttons!
+            cell5.appendChild(approveButton)
+            cell5.appendChild(denyButton)
+            row.appendChild(cell5)
+
             //append the tr (table row) to the tbody (table body)
             //a new row will be added FOR EVERY course that got returned in the fetch()
             document.getElementById("tableBody").appendChild(row)
 
             //in P1 you'll do something very similar for get all pending requests and get requests by user id
 
-        }
+        } //end of for loop
+
+        //when either of these buttons are clicked, a course can be approved OR denied
+        approveButton.onclick = approveDenyFunction(1)
+        denyButton.onclick = approveDenyFunction(2)
 
     })
 
@@ -67,15 +95,13 @@ async function createCourse(){
 
     console.log(newCourse) //printing out the object to make sure our data is valid
 
-    console.log(window.jwt)
-
     //remember, fetch takes two parameters. (url, {configuration object})
     await fetch(url + "courses", {
         method: "POST", //make this a POST request
 
         headers:{
             "Content-Type":"application/json",
-            "Authorization": "Bearer " + window.jwt
+            "Authorization": "Bearer " + document.cookie
         },
 
         body: JSON.stringify(newCourse) //turn our newCourse object into JSON
@@ -87,4 +113,35 @@ async function createCourse(){
     })
     .catch((error) => {alert("failed to create! " + error)})
 
+}
+
+
+function approveDenyFunction(newStatus){
+
+    //Depending on the number given, the course will either be approved or denied
+    //THIS WILL ACTUALLY BE FETCH REQUESTS. WITH A "PUT" VERB, MOST LIKELY
+    if(newStatus === 1){
+        alert("course approved!")
+    } 
+    else if(newStatus === 2){
+        alert("course denied!")
+    }
+
+    //yes, this could just be an else
+
+}
+
+
+//JWT UTILITY FUNCTION---
+
+//I didn't write this. It's a standard JWT parser, which should give us our payload (important user info)
+function parseJwt (token) {
+    console.log(token)
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
 }
