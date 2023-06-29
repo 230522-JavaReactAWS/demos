@@ -13,6 +13,26 @@ window.onload = async function(){
         //print out the incoming data to make sure we can see it
         console.log(data)
 
+        //for every Course object we get from our fetch request, populate a new table row 
+        for(let course of data){
+
+            //create a new table row
+            let row = document.createElement("tr")
+
+            //create a new cell (td) for each course variable
+            let cell = document.createElement("td")
+            //fill the cell with the appropriate course data
+            cell.innerText = course.id
+            //add the td element to the tr element
+            row.appendChild(cell)
+
+
+            //append the tr (table row) to the tbody (table body)
+            //a new row will be added FOR EVERY course that got returned in the fetch()
+            document.getElementById("tableBody").appendChild(row)
+
+        }
+
     })
 
 }
