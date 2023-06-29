@@ -62,7 +62,7 @@ async function login(){
         
 
     })
-    .catch((error) => document.getElementById("header").innerHTML = "Login Failed! Try again...")
+    .catch((error) => {document.getElementById("header").innerHTML = "Login Failed! Try again..."})
     .finally(() => alert("hi"))
 
     //TODO: Ben will fix the catch block. Why is it not catching? :(
