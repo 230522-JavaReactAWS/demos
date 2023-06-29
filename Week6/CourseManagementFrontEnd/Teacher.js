@@ -67,13 +67,15 @@ async function createCourse(){
 
     console.log(newCourse) //printing out the object to make sure our data is valid
 
+    console.log(window.jwt)
+
     //remember, fetch takes two parameters. (url, {configuration object})
     await fetch(url + "courses", {
         method: "POST", //make this a POST request
 
         headers:{
             "Content-Type":"application/json",
-            "Authorization": "Bearer " + //JWT????
+            "Authorization": "Bearer " + window.jwt
         },
 
         body: JSON.stringify(newCourse) //turn our newCourse object into JSON

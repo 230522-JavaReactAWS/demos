@@ -49,6 +49,13 @@ async function login(){
         //we need to translate our JWT to gather the incoming user data (name, id, role, etc)
         console.log(parseJwt(data.accessToken))
 
+        //we need to make some data globally visible (accessible in multiple JS files)
+        //one of many ways to do this is through a cookie
+        document.cookie = data.accessToken
+       
+        //print out our cookie 
+        console.log(document.cookie)
+
         //use the data to determine what landing page the user gets sent to (teacher page vs student page)
         if(parseJwt(data.accessToken).Role === "Teacher"){
             //switch to the teacher page
@@ -59,7 +66,6 @@ async function login(){
 
             //window.loction.href = "Student.html"
         }
-        
 
     })
     .catch((error) => {document.getElementById("header").innerHTML = "Login Failed! Try again..."})
