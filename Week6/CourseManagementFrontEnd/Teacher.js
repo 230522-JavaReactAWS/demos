@@ -72,11 +72,13 @@ window.onload = async function(){
 
             //in P1 you'll do something very similar for get all pending requests and get requests by user id
 
+            //when either of these buttons are clicked, a course can be approved OR denied
+            approveButton.onclick = () => approveDenyFunction(1, course.id)
+            denyButton.onclick = () => approveDenyFunction(2, course.id)
+
         } //end of for loop
 
-        //when either of these buttons are clicked, a course can be approved OR denied
-        approveButton.onclick = approveDenyFunction(1)
-        denyButton.onclick = approveDenyFunction(2)
+      
 
     })
 
@@ -116,15 +118,30 @@ async function createCourse(){
 }
 
 
-function approveDenyFunction(newStatus){
+function approveDenyFunction(newStatus, id){
 
     //Depending on the number given, the course will either be approved or denied
     //THIS WILL ACTUALLY BE FETCH REQUESTS. WITH A "PUT" VERB, MOST LIKELY
+    //You will need to provide the id of the reimbursement to update, as well as the new status id fk.
+    //you can either send that ID as path params or in the body for which you'll need to make a Reimbursement object for
     if(newStatus === 1){
-        alert("course approved!")
+        alert("course " + id + " approved!")
+
+        //example of an object we'd send in the fetch request body
+        //THIS SHOULD MATCH THE MODEL IN JAVA
+        let updatedCourse = {
+            id: data.id,
+            name: data.name,
+            description: data.description,
+            credits: data.credits
+        }
+
+        //PUT requests are quite similar to POSTs, except for specific distinctions
+        //for instance the method will be "PUT" instead of POST
+
     } 
     else if(newStatus === 2){
-        alert("course denied!")
+        alert("course " + id + " denied!")
     }
 
     //yes, this could just be an else
