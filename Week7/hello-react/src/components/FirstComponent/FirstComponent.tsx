@@ -5,6 +5,7 @@ import React from "react";
 //The parameters are "props" and "state", which we'll talk about later
 export class FirstComponent extends React.Component<{}, {}> {
 
+    //we will databind the value of this String below
     words:String = "I am stored in a variable in a class component";
 
     //Every Class Component must contain the render() function
@@ -13,6 +14,7 @@ export class FirstComponent extends React.Component<{}, {}> {
         return(
             <div>
                 <h3>Hello from our first component! This is a Class-based component</h3>
+                <p>Data bound value: {this.words}</p>
             </div>
         )
     }
