@@ -1,3 +1,14 @@
+/*App.css is good for GLOBAL STYLING
+Every styling in this file will be applied across the entire application*/
+
+/*.App is the className of the div in our return statement in App.tsx*/
+.App{
+  text-align: center;
+}
+
+
+/* Below is the previous default styling
+
 .App {
   text-align: center;
 }
@@ -36,3 +47,4 @@
     transform: rotate(360deg);
   }
 }
+*/
