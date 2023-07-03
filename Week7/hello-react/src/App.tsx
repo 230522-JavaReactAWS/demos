@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { FirstComponent } from './components/FirstComponent/FirstComponent';
+import { ParentComponent } from './components/ParentComponent/ParentComponent';
 
 /* The App.tsx is the root of our application (at least when it comes to component rendering)
 Most of our coding will be done elsewhere, but the App.tsx lets us control WHAT gets rendered
@@ -21,6 +22,7 @@ function App() {
       <h3>React will reload the webpage with every change</h3>
 
       <FirstComponent></FirstComponent>
+      <ParentComponent></ParentComponent>
 
     </div>
 
