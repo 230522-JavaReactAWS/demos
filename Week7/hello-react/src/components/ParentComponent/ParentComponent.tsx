@@ -1,4 +1,5 @@
 import React from "react";
+import { ChildComponent } from "../ChildComponent/ChildComponent";
 
 /* Again, every Class Component has two parameters - <props, and state>
  by leaving the state parameter as "any", we can define whatever object we want to store in the state
@@ -18,7 +19,7 @@ export class ParentComponent extends React.Component<{}, any>{
         return(
             <div>
                 <h1>Hello from the Parent Component! My favorite color is: {this.state.color}</h1>
-                
+                <ChildComponent color={this.state.color} animal={this.state.animal}></ChildComponent>
             </div>
         )
     }
