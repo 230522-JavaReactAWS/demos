@@ -35,4 +35,15 @@ export class UserComponent extends React.Component<any, UserInterface>{
 
     }
 
+    //as usual, we need a render method that renders the view of this component
+    render(){
+        return(
+            <div>
+                <h2>User: {this.state.firstName} {this.state.lastName}</h2>
+                <h3>Email: {this.state.email}</h3>
+                
+            </div>
+        )
+    }
+
 }

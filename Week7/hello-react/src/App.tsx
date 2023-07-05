@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { FirstComponent } from './components/FirstComponent/FirstComponent';
 import { ParentComponent } from './components/ParentComponent/ParentComponent';
+import { UserComponent } from './components/UserComponent/UserComponent';
 
 /* The App.tsx is the root of our application (at least when it comes to component rendering)
 Most of our coding will be done elsewhere, but the App.tsx lets us control WHAT gets rendered
@@ -23,6 +24,7 @@ function App() {
 
       <FirstComponent></FirstComponent>
       <ParentComponent></ParentComponent>
+      <UserComponent></UserComponent>
 
     </div>
 
