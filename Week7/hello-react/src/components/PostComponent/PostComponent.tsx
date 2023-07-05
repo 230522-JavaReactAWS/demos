@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { UserInterface } from "../../interfaces/UserInterface";
 
 /* export CONST instead of export CLASS. We're in a function component!
@@ -16,6 +16,19 @@ export const PostComponent: React.FC<UserInterface> = (user:UserInterface) => {
 
 
     /* useState and useEffect - two lifecycle hooks */
+
+    /*useState allows us to store and manipulate state
+    We declare a variable to access state, a mutator (similar to a setter) to change it, and a default value within the actual useState()
+    So now, we can access and change state */
+    let[post, setPost] = useState('')
+
+    /* useEffect allows us to execute some code when a certain event happens (we specify the event)
+    Similar to how eventListeners work. This can be button clicks, page loads, mouseover, etc.*/
+    useEffect(() => {
+        //we'll use the useEffect to call our useState mutator when the component loads
+        setPost("Thanks to useEffect, post content was set via useState on page load")
+    }, []) //empty square brackets because we want this useEffect to happen on component load
+
 
 
     //in function components, we only need return(), no render()
