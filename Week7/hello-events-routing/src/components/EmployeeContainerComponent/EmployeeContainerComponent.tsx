@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { EmployeeComponent } from '../EmployeeComponent/EmployeeComponent'
 
-export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
+export const EmployeeContainerComponent: React.FC<any> = (incomingData) => {
 
     //remember, useState lets us declare and mutate state values
     //we need a state object to send data to a child component's props
@@ -13,6 +13,7 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
 
         //we will set the employee state object to the Array found in data.ts on page load
         setEmployees(incomingData.data)
+        console.log(incomingData.data)
 
     }, []) //remember, [] means this triggers on page load
 
@@ -27,6 +28,10 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
         So, for every element in the employees Array (which holds the data from data.ts),
         Render one EmployeeComponent! 
         In that EmployeeComponent, we send the appropriate employee and key*/
+
+        //what is ...employee again? This means "the entire object" 
+        //... is known as the "spread operator". It "spreads" the data across the function
+        //we are sending an entire employeee object as props to the EmployeeComponent
     )
 
 }

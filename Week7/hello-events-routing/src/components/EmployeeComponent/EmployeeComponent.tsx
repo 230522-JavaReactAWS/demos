@@ -8,10 +8,10 @@ export const EmployeeComponent: React.FC<any> = (employee:any) => {
     return(
         <div className="employee-container">
             <div className="employee-name">
-
+                <h3>{employee.name}</h3>
             </div>
             <div className="employee-data">
-
+                <p>{employee.quote}</p>
             </div>
         </div>
     )
