@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { UserInterface } from "../../interfaces/UserInterface";
+import "./PostComponent.css"
 
 /* export CONST instead of export CLASS. We're in a function component!
 Recall how arrow functions work. they take in some arguments, and execute some code
@@ -41,7 +42,7 @@ export const PostComponent: React.FC<UserInterface> = (user:UserInterface) => {
 
             <div className="content-container">
                 <h5>{username} says:</h5>
-                <p>SOME DATA WILL GO HERE</p>
+                <p>{post}</p>
             </div>
         </div>
     )

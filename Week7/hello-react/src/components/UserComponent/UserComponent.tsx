@@ -1,5 +1,6 @@
 import React from "react";
 import { UserInterface } from "../../interfaces/UserInterface";
+import { PostComponent } from "../PostComponent/PostComponent";
 
 
 //This component has props of "any" so it could take any data from a parent class
@@ -41,8 +42,10 @@ export class UserComponent extends React.Component<any, UserInterface>{
             <div>
                 <h2>User: {this.state.firstName} {this.state.lastName}</h2>
                 <h3>Email: {this.state.email}</h3>
-                
+                <PostComponent {...this.state}></PostComponent>
             </div>
+            //to send the entire state object to a child's props, we can use {...this.state}
+            //...is like saying "all of this" "the entire state object"
         )
     }
 
