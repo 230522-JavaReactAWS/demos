@@ -21,8 +21,8 @@ export class UserComponent extends React.Component<any, UserInterface>{
 
     }
 
-    //componentDidMount is a LIFECYCLE HOOK often used for populating data after the component loads (mounts)
-    //but this can pretty much be used to do ANY as soon as the component renders
+    //componentDidMount is a LIFECYCLE METHOD often used for populating data after the component loads (mounts)
+    //but this can pretty much be used to do ANYTHING as soon as the component renders
     componentDidMount(): void {
 
     //hardcoding - but imagine we're making some HTTP call to a server (with axios) which grabs user data (maybe login?)
