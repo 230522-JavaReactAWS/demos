@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { EmployeeComponent } from '../EmployeeComponent/EmployeeComponent'
 
 export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
 
@@ -16,9 +17,16 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
     }, []) //remember, [] means this triggers on page load
 
     return(
+        //using .map() to render an EmployeeComponent for every piece of data in employees
         <div>
-            
+            {employees.map((employee:any) => {
+                return <EmployeeComponent {...employee} key={employee.userId}/>
+            })}
         </div>
+        /* Looks confusing, let me elaborate. We use .map on our employees state variable 
+        So, for every element in the employees Array (which holds the data from data.ts),
+        Render one EmployeeComponent! 
+        In that EmployeeComponent, we send the appropriate employee and key*/
     )
 
 }
