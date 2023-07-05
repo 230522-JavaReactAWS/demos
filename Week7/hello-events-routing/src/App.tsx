@@ -7,7 +7,7 @@ import { data } from './data';
 function App() {
   return (
     <div className="App">
-      <EmployeeContainerComponent incomingData={data}/>
+      <EmployeeContainerComponent data={data}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { EmployeeComponent } from '../EmployeeComponent/EmployeeComponent'
 
-export const EmployeeContainerComponent: React.FC<any> = (incomingData) => {
+export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
 
     //remember, useState lets us declare and mutate state values
     //we need a state object to send data to a child component's props
@@ -13,7 +13,6 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData) => {
 
         //we will set the employee state object to the Array found in data.ts on page load
         setEmployees(incomingData.data)
-        console.log(incomingData.data)
 
     }, []) //remember, [] means this triggers on page load
 
@@ -24,7 +23,7 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData) => {
                 return <EmployeeComponent {...employee} key={employee.userId}/>
             })}
         </div>
-        /* Looks confusing, let me elaborate. We use .map on our employees state variable 
+        /* Looks confusing, let me elaborate. We use .map on our employees state variable. 
         So, for every element in the employees Array (which holds the data from data.ts),
         Render one EmployeeComponent! 
         In that EmployeeComponent, we send the appropriate employee and key*/
