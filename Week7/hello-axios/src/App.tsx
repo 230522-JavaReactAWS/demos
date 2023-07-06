@@ -6,6 +6,7 @@ import { Login } from './components/Login/Login';
 
 function App() {
   return (
+    /* To make a component show up when the application starts, you can put the path as "" */
     <div className="App">
 
         <BrowserRouter>
