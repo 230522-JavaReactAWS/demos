@@ -12,7 +12,6 @@ export const MultiplyComponent: React.FC<any> = () => {
     const [secondValue, setSecond] = useState(0)
     const [result, setResult] = useState(0)
 
-
     //this function will store the first or second input value (depending on which one chenged)
     //we will take the name of the input, and assign values to state depending on that name
     const storeValues = (input:any) => {
@@ -25,7 +24,14 @@ export const MultiplyComponent: React.FC<any> = () => {
             setSecond(input.target.value) //the mutator for secondValue!
         }
 
-        alert("Value is: " + input.target.value)
+    }
+
+
+    //this function will multiply the two numbers stored in firstValue and secondValue
+    const multiplyValues = () => {
+
+        //use the mutator of result to store the product of the two numbers
+        setResult(firstValue * secondValue)
 
     }
 
@@ -37,8 +43,8 @@ export const MultiplyComponent: React.FC<any> = () => {
             <h3>Multiply Two Numbers!</h3>
             <InputComponent name="first" onChange={storeValues}/>
             <InputComponent name="second" onChange={storeValues}/>
-            <ResultComponent/>
-            <button>Calculate!</button>
+            <ResultComponent first={firstValue} second={secondValue} result={result}/>
+            <button onClick={multiplyValues}>Calculate!</button>
         </div>
     )
 }

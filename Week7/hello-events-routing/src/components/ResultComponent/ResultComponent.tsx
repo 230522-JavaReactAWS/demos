@@ -8,7 +8,7 @@ export const ResultComponent: React.FC<any> = (props:any) => {
             <p style={{color:"red"}}>
                 {props.first && props.second ? '' : "Please Enter Both Numbers!"}
             </p>
-            <p>RESULT GOES HERE</p>
+            <p>{props.result}</p>
         </>
     )
 
