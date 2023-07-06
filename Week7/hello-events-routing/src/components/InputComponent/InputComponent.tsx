@@ -8,7 +8,7 @@ export const InputComponent: React.FC<any> = (props:any) => {
     return(
         <>
             <p>Enter {props.name} value:</p>
-            <input type="number" name={props.name}/>
+            <input type="number" name={props.name} onChange={props.onChange}/>
         </>
     )
 

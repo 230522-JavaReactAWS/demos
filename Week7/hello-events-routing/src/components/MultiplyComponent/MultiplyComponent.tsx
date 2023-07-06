@@ -25,6 +25,8 @@ export const MultiplyComponent: React.FC<any> = () => {
             setSecond(input.target.value) //the mutator for secondValue!
         }
 
+        alert("Value is: " + input.target.value)
+
     }
 
 
