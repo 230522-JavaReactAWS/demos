@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ResultComponent: React.FC<any> = (props:any) => {
+export const ResultComponent: React.FC<any> = (props:any) => {
 
     return(
         /* If one or more values is missing, the user sees "Please Enter Both Numbers!" */
