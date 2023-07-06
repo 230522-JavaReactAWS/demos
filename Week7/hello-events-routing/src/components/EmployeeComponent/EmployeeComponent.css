@@ -1,0 +1,22 @@
+.employee-container{
+    width: 50%;
+    display: flex;
+    margin-right: auto;
+    margin-top: 1%;
+    height: fit-content;
+    border: 2px double black;
+    background-color: burlywood;
+    flex-direction: column;
+}
+
+.employee-profile{
+    display:flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: start;
+}
+
+.employee-content{
+    margin-left: auto;
+    margin-right: auto;
+}

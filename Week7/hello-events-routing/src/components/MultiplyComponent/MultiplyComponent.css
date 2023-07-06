@@ -1,0 +1,11 @@
+.input-container {
+    border-radius: 1em;
+    border-style: double;
+    border-width: .5em;
+    width: 20em;
+    margin-left: 10%;
+    margin-right: auto;
+    margin-top: 10%;
+    padding: 1em;
+    background-color: rgb(192, 192, 246);
+}

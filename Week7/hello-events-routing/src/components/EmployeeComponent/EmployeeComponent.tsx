@@ -1,6 +1,8 @@
 import React from 'react' //"rafce" to auto-generate a function component skeleton
 //this is thanks to a VSCode extension called "ES7+ React/Redux/React-Native Snippets"
 
+import "./EmployeeComponent.css"
+
 //I could have made an Employee interface to use that data type, but I won't
 export const EmployeeComponent: React.FC<any> = (employee:any) => {
 
