@@ -1,5 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Pokemon } from "../Pokemon/Pokemon";
+import "./Home.css"
 
 export const Home: React.FC<any> = () => {
 
@@ -37,7 +39,7 @@ export const Home: React.FC<any> = () => {
 
         //fill out the pokemon name/sprite state variables with the incoming data
         setPokemon((pokemon) => ({...pokemon, pokeName: response.data.name}))
-        setPokemon((pokemon) => ({...pokemon, pokeSprite: response.data.sprites.front_default}))
+        setPokemon((pokemon) => ({...pokemon, pokePic: response.data.sprites.front_default}))
 
     }
 
@@ -48,9 +50,13 @@ export const Home: React.FC<any> = () => {
                 <h3>Search for your Pokemon</h3>
                 <input type="number" name="pokeSearch" placeholder="Enter Pokemon Id" onChange={gatherInput}/>
                 <button className="poke-button" onClick={getPokemon}>Find Pokemon</button>
+                <Pokemon pokemon={pokemon}></Pokemon>
             </div>
 
+            
+
         </div>
+        //We're sending a prop called Pokemon to the Pokemon component. It contains our Pokemon state object defined above
     )
 
 }
