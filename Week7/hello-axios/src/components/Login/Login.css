@@ -37,10 +37,16 @@
     padding: auto;
     margin-top: 10px;
     margin-bottom: 10px;
+    
 }
 
 .login-button:hover {
     cursor: pointer;
+    box-shadow: 0 0 50px 15px #cdd7dd;
+}
+
+.input-container:hover{
+    box-shadow: 0 0 50px 15px #cdd7dd;
 }
 
 .disclaimer{
