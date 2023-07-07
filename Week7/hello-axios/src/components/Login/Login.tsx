@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import "./Login.css"
 import axios from 'axios'
+import { state } from '../../store'
 
 export const Login: React.FC<any> = () => {
 
@@ -31,7 +32,12 @@ export const Login: React.FC<any> = () => {
         const response = await axios.post("http://localhost:8080/auth/login", {username, password})
         .then((response) => {
                 //if the login was successful, log the user in and store the JWT
+                state.JWT = response.data.accessToken //STORED IN GLOBAL STATE IN STORE.TS
+
+                console.log(state.JWT) //the store.ts file has been changed! And now we can use JWT in our auth headers.
                 console.log(response.data.accessToken)
+
+
                 //we can use the useNavigate variable above to switch URLs (thus switching components)
                 navigate("/home")
             }
@@ -39,8 +45,6 @@ export const Login: React.FC<any> = () => {
         .catch((error) => {
             alert("Login failed! Please try again...")
         })
-
-        console.log(response)
 
 
 

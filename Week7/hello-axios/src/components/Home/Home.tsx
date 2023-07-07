@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Pokemon } from "../Pokemon/Pokemon";
 import "./Home.css"
+import { state } from "../../store";
 
 export const Home: React.FC<any> = () => {
 
@@ -27,10 +28,12 @@ export const Home: React.FC<any> = () => {
     //a function that makes an axios HTTP GET Request
     const getPokemon = async () => {
 
+        console.log("state: " + state.JWT)
+
         //Getting a certain pokemon by its Id (using the pokeId state attribute)
         //remember, we need to AWAIT anything that returns a promise
         const response = await axios.get("https://pokeapi.co/api/v2/pokemon/" + pokemon.pokeId, 
-        {headers: {Authorization: "Bearer: insertJWTHere"} }
+        {headers: {Authorization: "Bearer: " + state.JWT} }
         )
 
         //note the Authorization header!!^^ You can set any header you want with the headers object

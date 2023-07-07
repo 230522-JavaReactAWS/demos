@@ -16,6 +16,10 @@ look into redux to see a more sophisticated use of a store, but be warned it's a
 
     //maybe you want to store an Array of all the user accounts
     accounts:[]
+
+    //Don't just copy me though! think about your requirements
+    //if you only need accounts in one component, no need to globally store it.
+    //if you need data accessible between multiple components, it should probably be globally stored.
  }
 
  //these defaults will all get populated after the user triggers population 
