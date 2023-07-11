@@ -21,7 +21,8 @@ import org.springframework.web.bind.annotation.*;
 // This controller will be in charge of allowing us to actually register and login different people
 @RestController
 @RequestMapping("auth")
-@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000"}) //greenlight requests coming from frontend
+@CrossOrigin(origins = {"http://127.0.0.1:5500", "http://localhost:3000",
+        "http://hello-axios-react-app.s3-website-us-east-1.amazonaws.com"}) //greenlight requests coming from frontend
 public class AuthController {
 
     // We have a couple of imports that we'll add in to make sure everything works correctly
