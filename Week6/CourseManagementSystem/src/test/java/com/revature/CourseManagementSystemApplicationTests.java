@@ -128,13 +128,27 @@ public class CourseManagementSystemApplicationTests {
 		//create an invalid Person (invalid for the DB at least)
 		Person p = new Person();
 
-		//stubbing, and we'll just create a no args Person in the stubbing
+		//stubbing, and we'll just send no args Person in the stubbing
 		//if an invalid Person is sent in, we expect a null return
 		when(pDAO.save(p)).thenReturn(null);
 
 		//instead of assertNull, we'll test that a NullPointerException is thrown
 		assertThrows(NullPointerException.class, () -> personService.createPerson(p));
 
+	}
+
+	@Test
+	public void testDeletePersonByIdReturnsTrue(){
+
+//		//stubbing to set deleteById from the DAO to return true, given a valid Id
+//		when(pDAO.deleteById(id));
+
+		boolean b = personService.deletePersonById(5);
+
+		//the DAO is mocked, so this^ shouldn't delete any actual data
+
+		//assert that the method, when given a valid value, returns true
+		assertTrue(b);
 	}
 
 }
