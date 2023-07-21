@@ -69,6 +69,8 @@ public class AuthController {
         p.setUsername(registerDTO.getUsername());
         p.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
 
+        System.out.println(passwordEncoder.encode(registerDTO.getPassword()));
+
         // Now that we've done all this, let's set the standard role
         Role role = roleDao.getByName("Student");
 

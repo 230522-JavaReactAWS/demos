@@ -56,8 +56,6 @@ export const Home: React.FC<any> = () => {
                 <Pokemon pokemon={pokemon}></Pokemon>
             </div>
 
-            
-
         </div>
         //We're sending a prop called Pokemon to the Pokemon component. It contains our Pokemon state object defined above
     )

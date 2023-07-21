@@ -20,6 +20,7 @@ export const EmployeeContainerComponent: React.FC<any> = (incomingData:any) => {
         //using .map() to render an EmployeeComponent for every piece of data in employees
         <div>
             {employees.map((employee:any) => {
+                console.log("hey")
                 return <EmployeeComponent {...employee} key={employee.userId}/>
             })}
         </div>

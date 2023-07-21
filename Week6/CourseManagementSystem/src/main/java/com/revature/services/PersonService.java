@@ -68,9 +68,6 @@ public class PersonService {
     public Person findPersonByUsername(String username){
         return personDao.findByUsername(username)
                 .orElseThrow(() -> new PersonNotFoundException("No person found with username: " + username));
-
-
-
     }
 
 

@@ -4,6 +4,7 @@ package com.revature;
 import com.revature.daos.CourseDAO;
 import com.revature.daos.PersonDAO;
 import com.revature.exceptions.CourseNotFoundException;
+import com.revature.exceptions.PersonNotFoundException;
 import com.revature.models.Course;
 import com.revature.models.Person;
 import com.revature.models.Role;
@@ -140,15 +141,46 @@ public class CourseManagementSystemApplicationTests {
 	@Test
 	public void testDeletePersonByIdReturnsTrue(){
 
-//		//stubbing to set deleteById from the DAO to return true, given a valid Id
-//		when(pDAO.deleteById(id));
-
 		boolean b = personService.deletePersonById(5);
 
 		//the DAO is mocked, so this^ shouldn't delete any actual data
 
 		//assert that the method, when given a valid value, returns true
 		assertTrue(b);
+	}
+
+	//Test find by username returns a value when given a valid value
+	@Test
+	public void testFindByUsernameReturnsPerson(){
+
+		//stubbing - assigning a return value to the findByUsername() method
+		//the method isn't actually excuting!
+		//"If this method gets ValidUsername as an argument, return new Person()"
+		when(pDAO.findByUsername("ValidUsername"))
+				.thenReturn(Optional.of(new Person()));
+
+		//store the return of findPersonByUsername when given "ValidUsername"
+		//WHICH... should automatically assign a value of a new Person();
+		Person p = personService.findPersonByUsername("ValidUsername");
+
+		//make sure the returned value is not null!
+		assertNotNull(p); //the assert method is what actually gives us a passing/failing test
+	}
+
+	//Test find by username throws exception when given an invalid value
+	@Test
+	public void testFindByUsernameThrowsException(){
+
+		//"When findByUsername() from PersonDAO is called with an empty string as the argument..
+		//...then throw a PersonNotFoundException"
+		when(pDAO.findByUsername("")).thenThrow(new PersonNotFoundException("not found!"));
+
+		//remember, the assertion determines if the test passes or fails
+		//"Assert that a PersonNotFoundException is thrown...
+		///...when personService.findPersonByUsername is called with an empty string argument
+		assertThrows(PersonNotFoundException.class,
+				() -> personService.findPersonByUsername(""));
+
 	}
 
 }
