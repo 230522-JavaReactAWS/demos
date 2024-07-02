@@ -13,8 +13,10 @@ public class Launcher {
 
         System.out.println(randomNum);
 
-        System.out.println("==============================(If/Else if/Else)");
+        System.out.println("==============================(If/Else)");
 
+        //if the (expression) is true, run the code in the {block}. otherwise move on.
+        
         if(randomNum > 75){
             System.out.println("Random Number is large");
         } else if (randomNum > 30){
@@ -23,20 +25,13 @@ public class Launcher {
             System.out.println("Random Number is smol");
         }
 
-        /*
-         If the first condition is met, its block will run and the if else ends
-         If the first condition is not met, the else if block is tested
-         If the else if condition is met, it runs its block and the if else ends
-         If no conditions are met, the else block is called
-          */
-
         System.out.println("========================(While/Do-While Loops");
 
         //still using randomNum from above
 
-        //while loop---\
+        //while loop---/
 
-        //WHILE the randomNumber is less than 200, the while loop will run its code block
+        //WHILE (expression) is true, run the {block}. repeat until the (expression) is false
         while(randomNum < 200){
             randomNum += 20; //increasing randomNum by 20.
             //+=? it's basically shorthand for randomNum = randomNum + 20;
@@ -48,7 +43,7 @@ public class Launcher {
 
         //Do-While Loop---/
 
-        //Do-While Loops will execute their code block ONCE, and then check the condition
+        //Execute the {block} ONCE, and then check the (condition). repeat until false.
         //This is a way to make sure your loop code runs at least once
         do{
             randomNum -= 20;
@@ -64,32 +59,36 @@ public class Launcher {
         //"for as long as this int i, which starts at 0, is less than 10, increment it once per loop"
         //so in essence, we've written a loop that will run some code 10 times.
         for(int i = 0; i < 10; i++){
-            //every time this loop loops, this code will run
+            //every time this loops, this code will run
             System.out.println("Our loop variable is: " + i);
         }
 
-        //more interesting use case of for loops--/
+        //more common use case of for loops: moving through a sequence of values--/
 
-        //This is an Array, which is basically a list of values. In this case, an Array of chars
-        //In other words, a char Array
-        char[] myName = {'B', 'E', ' ', 'N', 'A', 'A', 'A'};
+        //This is an Array of Strings. In other words, a String Array.
+        String[] birds = {"duck", "duck", "puffin", "duck", "goose", "duck"};
 
         //Arrays are INDEXED, so we can retrieve individual values using their index
-        System.out.println(myName[0]); //Arrays are ZERO INDEXED. The first value is at index zero.
-        System.out.println(myName[6]); //Last value. NOT 7, despite there being 7 values. (it goes 0-6)
+        System.out.println(birds[0]); //Arrays are ZERO INDEXED. The first value is at index zero.
+        System.out.println(birds[5]); //Last value. NOT 6, despite there being 6 values. (it goes 0-5)
         System.out.println("----");
 
-        //I'm going to use a for loop to iterate through the Array, and print out the letters of my name
+        //I'm going to use a for loop to iterate through the Array, and print out ducks
+        //I only want to print out ducks, and I want to break my loop entirely if I hit goose
 
         //"As long as i is less than the number of values in the myName Array, run this block and increment"
-        for(int i = 0; i < myName.length; i++){
-
-            if(myName[i] == ' ' || myName[i] == 'A'){
+        for(int i = 0; i < birds.length; i++){
+            
+            if(birds[i].equals("puffin")){
                 continue; //continue causes the loop to skip its current iteration (its current loop)
             }
 
-            //if the if case is not met, we will print out the char
-            System.out.println(myName[i]);
+            if(birds[i].equals("goose")){
+                break; //break causes the loop to break entirely
+            }    
+
+            //if neither of the if statements run, print out the String (should only be ducks)
+            System.out.println(birds[i]);
 
         }
 
